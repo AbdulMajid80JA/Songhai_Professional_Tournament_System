@@ -1,0 +1,32 @@
+flask
+gunicorn
+reportlab
+werkzeug
+
+i have got this issue below when i was trying to register a new team: 
+
+ * Detected change in 'C:\\Users\\hamidu\\anaconda3\\Lib\\site-packages\\flask\\app.py', reloading
+ * Detected change in 'C:\\Users\\hamidu\\Documents\\Songhai_Professional_Tournament_System\\app.py', reloading
+127.0.0.1 - - [27/Apr/2026 10:54:26] "POST /register HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "C:\Users\hamidu\anaconda3\Lib\site-packages\flask\app.py", line 1498, in __call__
+    return self.wsgi_app(environ, start_response)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hamidu\anaconda3\Lib\site-packages\flask\app.py", line 1476, in wsgi_app
+    response = self.handle_exception(e)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hamidu\anaconda3\Lib\site-packages\flask\app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hamidu\anaconda3\Lib\site-packages\flask\app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hamidu\anaconda3\Lib\site-packages\flask\app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hamidu\anaconda3\Lib\site-packages\flask\app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\hamidu\Documents\Songhai_Professional_Tournament_System\app.py", line 176, in register
+    db().execute("""
+sqlite3.OperationalError: table teams has no column named logo
