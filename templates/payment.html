@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(to bottom,#f5efff,#ffffff);
+text-align:center;
+}
+
+.back-btn{
+margin-top:25px;
+background:#4B0082;
+color:white;
+border:none;
+padding:12px 28px;
+font-weight:bold;
+border-radius:30px;
+cursor:pointer;
+box-shadow:0 4px 12px rgba(0,0,0,.18);
+}
+
+.hero{
+padding:45px 20px 20px;
+}
+
+.hero h1{
+font-size:54px;
+color:#4B0082;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:20px;
+color:#444;
+max-width:850px;
+margin:auto;
+line-height:1.8;
+}
+
+.payment-box{
+max-width:1000px;
+margin:50px auto;
+background:white;
+padding:50px;
+border-radius:28px;
+box-shadow:0 8px 30px rgba(0,0,0,.12);
+border-top:10px solid #4B0082;
+}
+
+.fee-banner{
+background:#4B0082;
+color:white;
+padding:30px;
+border-radius:22px;
+font-size:34px;
+font-weight:bold;
+margin-bottom:35px;
+}
+
+.card{
+background:#f8f4ff;
+margin:25px 0;
+padding:28px;
+border-left:8px solid #4B0082;
+border-radius:18px;
+font-size:23px;
+line-height:1.9;
+text-align:left;
+}
+
+.section-title{
+font-size:34px;
+font-weight:900;
+color:#4B0082;
+margin:45px 0 25px;
+}
+
+.pay-btn{
+display:inline-block;
+background:#111;
+color:white;
+padding:18px 38px;
+text-decoration:none;
+border-radius:35px;
+font-size:20px;
+font-weight:bold;
+margin-top:25px;
+}
+
+.qr-box{
+margin-top:35px;
+}
+
+.qr-box img{
+width:250px;
+border-radius:20px;
+box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+.notice{
+background:#111;
+color:white;
+padding:28px;
+border-radius:18px;
+margin-top:40px;
+font-size:20px;
+line-height:1.7;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:38px;
+}
+
+.payment-box{
+margin:20px;
+padding:30px;
+}
+
+.card{
+font-size:19px;
+}
+
+}
+
+</style>
+
+</head>
+<body>
+
+<button onclick="history.back()" class="back-btn">
+⬅ Back
+</button>
+
+
+<div class="hero">
+
+<h1>
+Tournament Registration Payment
+</h1>
+
+<p>
+Official MTN Mobile Money payment channel for team registration.
+</p>
+
+</div>
+
+
+
+<div class="payment-box">
+
+<div class="fee-banner">
+Registration Fee: GHS 300
+</div>
+
+
+<div class="section-title">
+MTN Mobile Money Payment Details
+</div>
+
+
+<div class="card">
+📱 Network: MTN Ghana <br><br>
+
+💳 MoMo Number: 055 115 3989 <br><br>
+
+👤 Account Name: Songhai Football Gala <br><br>
+
+🧾 Reference: Use Team Name as Payment Reference
+</div>
+
+
+<div class="section-title">
+How To Pay
+</div>
+
+<div class="card">
+
+1. Dial *170# <br><br>
+
+2. Select Transfer → MoMo User <br><br>
+
+3. Enter Tournament Number <br><br>
+
+4. Enter Registration Fee <br><br>
+
+5. Use Team Name as reference <br><br>
+
+6. Upload proof during registration
+
+</div>
+
+
+<div class="qr-box">
+
+<h3 style="color:#4B0082;">
+Optional QR Payment Scan
+</h3>
+
+<img src="/static/images/momo_qr.png">
+
+</div>
+
+
+<a href="/register" class="pay-btn">
+Proceed To Registration
+</a>
+
+
+
+<div class="notice">
+
+<strong>Important:</strong><br><br>
+
+Payment alone does not complete registration.<br>
+
+Team registration form and payment proof submission are required.
+
+</div>
+
+
+</div>
+
+</body>
+</html>

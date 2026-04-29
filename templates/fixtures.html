@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/css/style.css">
+
+<style>
+
+body{
+font-family:Arial;
+background:linear-gradient(to bottom,#f6f2ff,#ebe3ff);
+text-align:center;
+margin:0;
+}
+
+.back-btn{
+background:#4B0082;
+color:white;
+padding:12px 30px;
+border:none;
+border-radius:30px;
+margin:20px;
+font-weight:bold;
+font-size:16px;
+box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+
+.title2{
+font-size:50px;
+color:#4B0082;
+margin-top:20px;
+text-shadow:1px 1px 4px rgba(0,0,0,.08);
+}
+
+.group-box{
+background:white;
+width:92%;
+max-width:1150px;
+margin:35px auto;
+padding:30px;
+border-radius:25px;
+border-top:8px solid #4B0082;
+box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+overflow:hidden;
+border-radius:15px;
+}
+
+th{
+background:#4B0082;
+color:white;
+padding:14px;
+}
+
+td{
+padding:12px;
+border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+background:#f7f2ff;
+}
+
+.card{
+background:linear-gradient(135deg,#ffffff,#eee5ff);
+padding:28px;
+margin:35px auto;
+border-radius:22px;
+width:90%;
+max-width:850px;
+box-shadow:0 6px 16px rgba(0,0,0,.1);
+}
+
+.qual-box{
+background:#f2ebff;
+padding:18px;
+border-radius:15px;
+margin-top:20px;
+font-weight:bold;
+font-size:20px;
+color:#4B0082;
+}
+
+.round{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:22px;
+margin:30px;
+}
+
+.match{
+background:white;
+padding:22px;
+border-left:7px solid #4B0082;
+border-radius:16px;
+min-width:280px;
+font-weight:bold;
+box-shadow:0 4px 12px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.match:hover{
+transform:scale(1.03);
+}
+
+.champion{
+background:#4B0082;
+color:white;
+padding:35px;
+border-radius:22px;
+width:430px;
+margin:40px auto;
+font-size:30px;
+font-weight:bold;
+box-shadow:0 6px 18px rgba(0,0,0,.25);
+}
+
+select,input{
+padding:12px;
+margin:10px;
+border-radius:10px;
+border:1px solid #bbb;
+}
+
+button{
+background:#4B0082;
+color:white;
+border:none;
+padding:12px 28px;
+border-radius:28px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.fixture-generator{
+background:white;
+padding:30px;
+width:92%;
+max-width:1100px;
+margin:40px auto;
+border-radius:25px;
+box-shadow:0 8px 22px rgba(0,0,0,.1);
+}
+
+#generated-fixtures{
+margin-top:30px;
+}
+
+</style>
+
+</head>
+<body>
+
+<button onclick="history.back()" class="back-btn">
+⬅ Back
+</button>
+
+<h1 class="title2">
+Tournament Fixtures & Brackets
+</h1>
+
+
+<!-- GROUPS -->
+
+{% for grp,start in [('A',1),('B',5),('C',9),('D',13)] %}
+
+<div class="group-box">
+
+<h2>Group {{grp}}</h2>
+
+<table>
+
+<tr>
+<th>Team</th>
+<th>P</th>
+<th>W</th>
+<th>D</th>
+<th>L</th>
+<th>GF</th>
+<th>GA</th>
+<th>Pts</th>
+</tr>
+
+{% for n in range(start,start+4) %}
+<tr>
+<td>{{teams[n-1]}}</td>
+<td id="t{{n}}_p">0</td>
+<td id="t{{n}}_w">0</td>
+<td id="t{{n}}_d">0</td>
+<td id="t{{n}}_l">0</td>
+<td id="t{{n}}_gf">0</td>
+<td id="t{{n}}_ga">0</td>
+<td id="t{{n}}_pts">0</td>
+</tr>
+{% endfor %}
+
+</table>
+
+<div id="group{{grp}}qual" class="qual-box">
+Qualified teams appear here
+</div>
+
+</div>
+
+{% endfor %}
+
+
+
+<!-- GENERATE FIXTURES -->
+
+<div class="fixture-generator">
+
+<h2>Create Group Fixtures</h2>
+
+<p>
+Auto-generate all round-robin matches for all groups.
+</p>
+
+<button onclick="generateFixtures()">
+Generate Fixtures
+</button>
+
+<div id="generated-fixtures"></div>
+
+</div>
+
+
+
+<!-- MATCH ENTRY -->
+
+<div class="card">
+
+<h2>Enter Match Result</h2>
+
+<select id="teamA">
+{% for t in teams %}
+<option>{{t}}</option>
+{% endfor %}
+</select>
+
+<input id="scoreA" type="number" placeholder="Goals">
+
+vs
+
+<input id="scoreB" type="number" placeholder="Goals">
+
+<select id="teamB">
+{% for t in teams %}
+<option>{{t}}</option>
+{% endfor %}
+</select>
+
+<br><br>
+
+<button onclick="addResult()">
+Update Table
+</button>
+
+</div>
+
+
+
+<h2 class="title2">Quarterfinal Bracket</h2>
+
+<div class="round">
+
+<div id="qf1" class="match">
+Winner A vs Runner-up B
+</div>
+
+<div id="qf2" class="match">
+Winner B vs Runner-up A
+</div>
+
+<div id="qf3" class="match">
+Winner C vs Runner-up D
+</div>
+
+<div id="qf4" class="match">
+Winner D vs Runner-up C
+</div>
+
+</div>
+
+
+
+<h2 class="title2">Semifinals</h2>
+
+<div class="round">
+
+<div class="match">
+Winner QF1 vs Winner QF2
+</div>
+
+<div class="match">
+Winner QF3 vs Winner QF4
+</div>
+
+</div>
+
+
+
+<h2 class="title2">Final</h2>
+
+<div class="champion">
+🏆 Championship Match
+</div>
+
+
+
+<script>
+
+let teamsData={};
+
+{% for i in range(16) %}
+teamsData["{{i+1}}"]={
+name:"{{teams[i]}}",
+p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0
+};
+{% endfor %}
+
+
+
+function renderTable(){
+
+for(let id in teamsData){
+
+let t=teamsData[id];
+
+document.getElementById('t'+id+'_p').innerHTML=t.p;
+document.getElementById('t'+id+'_w').innerHTML=t.w;
+document.getElementById('t'+id+'_d').innerHTML=t.d;
+document.getElementById('t'+id+'_l').innerHTML=t.l;
+document.getElementById('t'+id+'_gf').innerHTML=t.gf;
+document.getElementById('t'+id+'_ga').innerHTML=t.ga;
+document.getElementById('t'+id+'_pts').innerHTML=t.pts;
+
+}
+
+autoQualifiers();
+
+}
+
+
+
+function addResult(){
+
+let A=document.getElementById('teamA').value;
+let B=document.getElementById('teamB').value;
+
+if(A==B){
+alert("Same team not allowed");
+return;
+}
+
+let map={
+{% for i in range(16) %}
+"{{teams[i]}}":"{{i+1}}",
+{% endfor %}
+};
+
+let a=map[A];
+let b=map[B];
+
+let sA=parseInt(document.getElementById('scoreA').value);
+let sB=parseInt(document.getElementById('scoreB').value);
+
+teamsData[a].p++;
+teamsData[b].p++;
+
+teamsData[a].gf+=sA;
+teamsData[a].ga+=sB;
+
+teamsData[b].gf+=sB;
+teamsData[b].ga+=sA;
+
+if(sA>sB){
+teamsData[a].w++;
+teamsData[b].l++;
+teamsData[a].pts+=3;
+}
+else if(sB>sA){
+teamsData[b].w++;
+teamsData[a].l++;
+teamsData[b].pts+=3;
+}
+else{
+teamsData[a].d++;
+teamsData[b].d++;
+teamsData[a].pts++;
+teamsData[b].pts++;
+}
+
+renderTable();
+
+}
+
+
+
+function sortGroup(ids){
+
+return ids.sort(function(a,b){
+
+let gdA=teamsData[a].gf-teamsData[a].ga;
+let gdB=teamsData[b].gf-teamsData[b].ga;
+
+if(teamsData[b].pts!=teamsData[a].pts)
+return teamsData[b].pts-teamsData[a].pts;
+
+if(gdB!=gdA)
+return gdB-gdA;
+
+return teamsData[b].gf-teamsData[a].gf;
+
+});
+
+}
+
+
+
+function autoQualifiers(){
+
+let A=sortGroup(['1','2','3','4']);
+let B=sortGroup(['5','6','7','8']);
+let C=sortGroup(['9','10','11','12']);
+let D=sortGroup(['13','14','15','16']);
+
+document.getElementById("qf1").innerHTML=
+teamsData[A[0]].name+"<br>vs<br>"+teamsData[B[1]].name;
+
+document.getElementById("qf2").innerHTML=
+teamsData[B[0]].name+"<br>vs<br>"+teamsData[A[1]].name;
+
+document.getElementById("qf3").innerHTML=
+teamsData[C[0]].name+"<br>vs<br>"+teamsData[D[1]].name;
+
+document.getElementById("qf4").innerHTML=
+teamsData[D[0]].name+"<br>vs<br>"+teamsData[C[1]].name;
+
+document.getElementById("groupAqual").innerHTML=
+"Qualified: "+teamsData[A[0]].name+" / "+teamsData[A[1]].name;
+
+document.getElementById("groupBqual").innerHTML=
+"Qualified: "+teamsData[B[0]].name+" / "+teamsData[B[1]].name;
+
+document.getElementById("groupCqual").innerHTML=
+"Qualified: "+teamsData[C[0]].name+" / "+teamsData[C[1]].name;
+
+document.getElementById("groupDqual").innerHTML=
+"Qualified: "+teamsData[D[0]].name+" / "+teamsData[D[1]].name;
+
+}
+
+
+
+function generateFixtures(){
+
+let groups=[
+['{{groups.A[0]}}','{{groups.A[1]}}','{{groups.A[2]}}','{{groups.A[3]}}'],
+['{{groups.B[0]}}','{{groups.B[1]}}','{{groups.B[2]}}','{{groups.B[3]}}'],
+['{{groups.C[0]}}','{{groups.C[1]}}','{{groups.C[2]}}','{{groups.C[3]}}'],
+['{{groups.D[0]}}','{{groups.D[1]}}','{{groups.D[2]}}','{{groups.D[3]}}']
+];
+
+let output='';
+
+groups.forEach(function(group,index){
+
+output+="<h2>Group "+String.fromCharCode(65+index)+" Fixtures</h2>";
+
+for(let i=0;i<group.length;i++){
+for(let j=i+1;j<group.length;j++){
+
+output+=
+'<div class="match">'+
+group[i]+' vs '+group[j]+
+'</div>';
+
+}
+}
+
+});
+
+document.getElementById('generated-fixtures').innerHTML=output;
+
+}
+
+</script>
+
+</body>
+</html>

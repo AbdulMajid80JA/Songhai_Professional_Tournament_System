@@ -1,0 +1,273 @@
+<html>
+<head>
+<link rel="stylesheet" href="/static/css/style.css">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(to bottom,#f5efff,#ffffff);
+text-align:center;
+}
+
+/* HEADER */
+
+.news-header{
+background:linear-gradient(90deg,#4B0082,#111);
+padding:30px 20px;
+color:white;
+box-shadow:0 4px 18px rgba(0,0,0,.2);
+}
+
+.news-header h1{
+font-size:54px;
+margin:0;
+font-weight:900;
+text-shadow:2px 2px 8px rgba(0,0,0,.35);
+}
+
+.news-header p{
+font-size:20px;
+color:#e8d9ff;
+margin-top:10px;
+}
+
+.back-btn{
+margin-top:20px;
+background:white;
+color:#4B0082;
+border:none;
+padding:12px 28px;
+border-radius:30px;
+font-weight:bold;
+cursor:pointer;
+}
+
+
+/* NEWS PANEL */
+
+.section-title{
+font-size:44px;
+color:#4B0082;
+margin-top:55px;
+margin-bottom:20px;
+}
+
+.news-card{
+background:white;
+max-width:850px;
+margin:30px auto;
+padding:40px;
+border-radius:30px;
+box-shadow:0 10px 30px rgba(0,0,0,.10);
+border-top:8px solid #4B0082;
+}
+
+.news-card h3{
+font-size:34px;
+color:#4B0082;
+margin-bottom:25px;
+}
+
+.news-card p{
+font-size:21px;
+line-height:2;
+color:#444;
+}
+
+
+/* OPTIONAL NEWS ALERT TICKER */
+
+.alert-bar{
+background:#111;
+color:white;
+padding:15px;
+font-weight:bold;
+margin-top:30px;
+}
+
+
+/* SPONSORS */
+
+.sponsors-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:30px;
+max-width:1200px;
+margin:40px auto 70px;
+padding:20px;
+}
+
+.sponsor{
+background:white;
+padding:30px;
+border-radius:25px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+transition:.3s;
+border-top:6px solid #4B0082;
+}
+
+.sponsor:hover{
+transform:translateY(-6px);
+}
+
+.sponsor img{
+width:140px;
+height:140px;
+object-fit:contain;
+margin-bottom:18px;
+}
+
+.sponsor p{
+font-size:20px;
+font-weight:bold;
+color:#4B0082;
+}
+
+
+/* FOOTER BANNER */
+
+.partners{
+background:linear-gradient(90deg,#4B0082,#111);
+color:white;
+padding:35px;
+font-size:24px;
+font-weight:bold;
+}
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.news-header h1{
+font-size:34px;
+}
+
+.section-title{
+font-size:30px;
+}
+
+.news-card p{
+font-size:17px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<div class="news-header">
+
+<h1>Tournament News & Sponsors</h1>
+
+<p>
+Official announcements, tournament updates and partner recognition
+</p>
+
+<button onclick="history.back()" class="back-btn">
+⬅ Back
+</button>
+
+</div>
+
+
+
+<div class="alert-bar">
+⚽ Registration deadline June 30 | Fixtures Release Soon | Opening Ceremony July 12
+</div>
+
+
+
+<h2 class="section-title">
+Latest Updates
+</h2>
+
+
+<div class="news-card">
+
+<h3>Official Tournament Bulletin</h3>
+
+<p>
+
+Opening ceremony starts July 12.<br><br>
+
+Registration deadline June 30.<br><br>
+
+Fixtures announcement coming soon.
+
+</p>
+
+</div>
+
+
+
+<h2 class="section-title">
+Our Sponsors
+</h2>
+
+
+
+<div class="sponsors-grid">
+
+<div class="sponsor">
+<img src="/static/images/sponsor1.png">
+<p>Sponsor 1</p>
+</div>
+
+<div class="sponsor">
+<img src="/static/images/sponsor2.png">
+<p>Sponsor 2</p>
+</div>
+
+<div class="sponsor">
+<img src="/static/images/sponsor3.png">
+<p>Sponsor 3</p>
+</div>
+
+<div class="sponsor">
+<img src="/static/images/sponsor4.png">
+<p>Sponsor 4</p>
+</div>
+
+<div class="sponsor">
+<img src="/static/images/sponsor5.png">
+<p>Sponsor 5</p>
+</div>
+
+<div class="sponsor">
+<img src="/static/images/sponsor6.png">
+<p>Sponsor 6</p>
+</div>
+
+<div class="sponsor">
+<img src="/static/images/sponsor7.png">
+<p>Sponsor 7</p>
+</div>
+
+<div class="sponsor">
+<img src="/static/images/sponsor8.png">
+<p>Sponsor 8</p>
+</div>
+
+<div class="sponsor">
+<img src="/static/images/sponsor9.png">
+<p>Sponsor 9</p>
+</div>
+
+</div>
+
+
+
+<div class="partners">
+Proud Partners of Songhai Sallah Football Gala Tournament
+</div>
+
+
+</body>
+</html>
