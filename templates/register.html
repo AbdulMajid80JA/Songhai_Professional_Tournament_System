@@ -1,0 +1,323 @@
+<html>
+<head>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(to bottom,#f5efff,#ffffff);
+text-align:center;
+}
+
+.back-btn{
+margin-top:25px;
+background:#4B0082;
+color:white;
+border:none;
+padding:12px 30px;
+font-weight:bold;
+border-radius:30px;
+cursor:pointer;
+box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+
+.hero{
+padding:35px 20px 20px;
+}
+
+.hero h1{
+font-size:52px;
+color:#4B0082;
+margin-bottom:12px;
+}
+
+.hero p{
+font-size:20px;
+max-width:850px;
+margin:auto;
+line-height:1.7;
+color:#444;
+}
+
+.reg-box{
+max-width:760px;
+margin:40px auto;
+background:white;
+padding:50px;
+border-radius:30px;
+box-shadow:0 10px 30px rgba(0,0,0,.12);
+border-top:10px solid #4B0082;
+}
+
+.form{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.form label{
+text-align:left;
+font-size:20px;
+font-weight:800;
+color:#222;
+}
+
+input,select{
+padding:17px;
+font-size:18px;
+border:2px solid #ddd;
+border-radius:14px;
+outline:none;
+}
+
+input:focus,
+select:focus{
+border-color:#4B0082;
+box-shadow:0 0 10px rgba(75,0,130,.15);
+}
+
+.section-title{
+font-size:30px;
+color:#4B0082;
+font-weight:900;
+margin-top:30px;
+}
+
+.submit-btn{
+background:linear-gradient(90deg,#4B0082,#111);
+color:white;
+border:none;
+padding:18px;
+font-size:22px;
+font-weight:bold;
+border-radius:15px;
+cursor:pointer;
+margin-top:25px;
+}
+
+.submit-btn:hover{
+transform:scale(1.02);
+}
+
+.notice{
+margin-top:35px;
+background:#f8f3ff;
+padding:25px;
+border-radius:18px;
+font-size:18px;
+line-height:1.8;
+}
+
+.badge{
+display:inline-block;
+margin-top:20px;
+background:#111;
+color:white;
+padding:10px 24px;
+border-radius:30px;
+font-weight:bold;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:38px;
+}
+
+.reg-box{
+margin:20px;
+padding:30px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<button onclick="history.back()" class="back-btn">
+⬅ Back
+</button>
+
+
+
+<div class="hero">
+
+<h1>
+Official Team Registration Portal
+</h1>
+
+<p>
+Register your club for the Songhai Sallah Football Gala Tournament.
+Complete the official entry form below.
+</p>
+
+</div>
+
+
+
+<div class="reg-box">
+
+
+<form
+method="post"
+enctype="multipart/form-data"
+class="form"
+>
+
+
+<label>Team Name</label>
+<input
+name="team_name"
+placeholder="Enter Team Name"
+required
+>
+
+
+<label>Team Logo Upload</label>
+<input
+type="file"
+name="team_logo"
+accept="image/*"
+>
+
+
+
+<label>Team Manager</label>
+<input
+name="manager"
+placeholder="Manager Name"
+required
+>
+
+
+<label>Team Coach</label>
+<input
+name="coach"
+placeholder="Coach Name"
+required
+>
+
+
+<label>Team Captain</label>
+<input
+name="captain"
+placeholder="Captain Name"
+required
+>
+
+
+
+<label>Number Of Players (Maximum 25)</label>
+
+<input
+type="number"
+max="25"
+name="players"
+required
+>
+
+
+
+<div class="section-title">
+Player Roster
+</div>
+
+
+<input name="player1" placeholder="Player 1">
+<input name="player2" placeholder="Player 2">
+<input name="player3" placeholder="Player 3">
+<input name="player4" placeholder="Player 4">
+<input name="player5" placeholder="Player 5">
+<input name="player6" placeholder="Player 6">
+<input name="player7" placeholder="Player 7">
+<input name="player8" placeholder="Player 8">
+<input name="player9" placeholder="Player 9">
+<input name="player10" placeholder="Player 10">
+
+<input name="player11" placeholder="Player 11">
+<input name="player12" placeholder="Player 12">
+<input name="player13" placeholder="Player 13">
+<input name="player14" placeholder="Player 14">
+<input name="player15" placeholder="Player 15">
+<input name="player16" placeholder="Player 16">
+<input name="player17" placeholder="Player 17">
+<input name="player18" placeholder="Player 18">
+<input name="player19" placeholder="Player 19">
+<input name="player20" placeholder="Player 20">
+
+<input name="player21" placeholder="Player 21">
+<input name="player22" placeholder="Player 22">
+<input name="player23" placeholder="Player 23">
+<input name="player24" placeholder="Player 24">
+<input name="player25" placeholder="Player 25">
+
+
+
+<label>Tournament Edition</label>
+
+<select name="year">
+<option>2024</option>
+<option>2025</option>
+<option>2026</option>
+</select>
+
+
+
+<label>Registration Fee Payment</label>
+
+<select name="payment">
+<option>Cash</option>
+<option>MOMO</option>
+</select>
+
+
+
+<label>Upload Proof Of Payment</label>
+
+<input
+type="file"
+name="payment_proof"
+accept="image/*,.pdf"
+>
+
+
+
+<button class="submit-btn">
+Register Team
+</button>
+
+
+</form>
+
+
+
+<div class="notice">
+
+⚽ Maximum squad size: 25 players<br>
+
+📝 Registered players only eligible<br>
+
+💰 Payment accepted by Cash or MOMO<br>
+
+📄 Registration slip auto-generated after submission
+
+</div>
+
+
+<div class="badge">
+Federation-Level Registration System
+</div>
+
+
+</div>
+
+
+</body>
+</html>
