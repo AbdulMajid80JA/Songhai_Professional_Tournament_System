@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(to bottom,#f5efff,#ffffff);
+text-align:center;
+}
+
+.back-btn{
+margin-top:25px;
+background:#4B0082;
+color:white;
+border:none;
+padding:12px 28px;
+font-weight:bold;
+border-radius:30px;
+cursor:pointer;
+}
+
+.hero{
+padding:45px 20px 20px;
+}
+
+.hero h1{
+font-size:52px;
+color:#4B0082;
+}
+
+.payment-box{
+max-width:1000px;
+margin:40px auto;
+background:white;
+padding:45px;
+border-radius:25px;
+box-shadow:0 8px 30px rgba(0,0,0,.12);
+border-top:10px solid #4B0082;
+}
+
+.section-title{
+font-size:30px;
+font-weight:900;
+color:#4B0082;
+margin:40px 0 20px;
+}
+
+.card{
+background:#f8f4ff;
+margin:20px 0;
+padding:25px;
+border-left:6px solid #4B0082;
+border-radius:15px;
+text-align:left;
+font-size:18px;
+line-height:1.8;
+}
+
+.pay-btn{
+display:inline-block;
+background:#111;
+color:white;
+padding:18px 35px;
+border-radius:30px;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+margin-top:25px;
+border:none;
+}
+
+.notice{
+background:#111;
+color:white;
+padding:25px;
+border-radius:15px;
+margin-top:30px;
+font-size:18px;
+}
+
+.footer{
+margin-top:40px;
+padding:25px;
+background:#4B0082;
+color:white;
+font-size:16px;
+}
+
+.footer a{
+color:white;
+margin:0 10px;
+text-decoration:underline;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<button onclick="history.back()" class="back-btn">⬅ Back</button>
+
+<div class="hero">
+<h1>Secure Tournament Payment</h1>
+<p>Pay registration fee securely via MTN MoMo or Paystack</p>
+</div>
+
+<div class="payment-box">
+
+<div class="section-title">Registration Fee</div>
+
+<div class="card">
+<strong>Amount:</strong> GHS 300 <br>
+<strong>Currency:</strong> Ghana Cedis (GHS)
+</div>
+
+<div class="section-title">Pay with Paystack (Recommended)</div>
+
+<div class="card">
+Fast, secure online payment via card, bank or mobile money.
+</div>
+
+<button class="pay-btn" onclick="payWithPaystack()">
+Pay Now Securely
+</button>
+
+<div class="section-title">MTN MoMo Manual Payment</div>
+
+<div class="card">
+📱 Network: MTN Ghana <br><br>
+💳 Number: 0551153989 <br><br>
+👤 Name: Songhai Football Gala <br><br>
+🧾 Reference: Use Team Name
+</div>
+
+<div class="section-title">Terms & Conditions</div>
+
+<div class="card">
+- All teams must complete payment before approval.<br>
+- Submission of false information leads to disqualification.<br>
+- Tournament organizers reserve the right to verify payments.<br>
+- Participation confirms acceptance of all tournament rules.<br>
+- Organizers may modify schedule or structure if necessary.
+</div>
+
+<div class="section-title">Refund Policy</div>
+
+<div class="card">
+- Registration fees are <strong>non-refundable</strong> after approval.<br>
+- Refunds are only issued if the tournament is cancelled by organizers.<br>
+- Duplicate payments will be reviewed and refunded within 7 working days.<br>
+- Refund requests must be submitted with valid proof of payment.<br>
+- Processing fees (if any) may be deducted.
+</div>
+
+<div class="section-title">Privacy Policy</div>
+
+<div class="card">
+- We collect team and payment data strictly for tournament management.<br>
+- Your data will not be sold or shared with third parties.<br>
+- Payment processing is handled securely by Paystack.<br>
+- Uploaded documents are used only for verification purposes.<br>
+- Users may request data deletion after the tournament.
+</div>
+
+<div class="notice">
+⚠ Payment alone does NOT complete registration.  
+You must submit the registration form + payment proof.
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 Songhai Sallah Football Gala |
+<a href="/payment">Payment</a> |
+<a href="/rules">Terms</a> |
+<a href="/privacy">Privacy</a>
+</div>
+
+
+<script>
+
+function payWithPaystack(){
+var handler = PaystackPop.setup({
+key: 'pk_test_xxxxxxxxxxxxxxxx', // replace with your key
+email: 'customer@email.com',
+amount: 30000, // 300 GHS in pesewas
+currency: 'GHS',
+
+callback: function(response){
+alert('Payment successful! Ref: ' + response.reference);
+window.location.href = "/register";
+},
+
+onClose: function(){
+alert('Transaction cancelled');
+}
+});
+
+handler.openIframe();
+}
+
+</script>
+
+</body>
+</html>

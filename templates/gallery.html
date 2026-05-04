@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(to bottom,#f5efff,#ffffff);
+}
+
+/* HEADER */
+
+.header{
+background:linear-gradient(90deg,#4B0082,#111);
+color:white;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.header h1{
+font-size:24px;
+font-weight:900;
+}
+
+.back-btn{
+background:white;
+color:#4B0082;
+border:none;
+padding:10px 20px;
+border-radius:20px;
+font-weight:bold;
+cursor:pointer;
+}
+
+/* TITLE */
+
+.title{
+text-align:center;
+margin:40px 0 10px;
+font-size:42px;
+font-weight:900;
+color:#4B0082;
+}
+
+.subtitle{
+text-align:center;
+color:#555;
+margin-bottom:30px;
+}
+
+/* GALLERY GRID */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:30px;
+max-width:1200px;
+margin:auto;
+}
+
+.item{
+position:relative;
+overflow:hidden;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+cursor:pointer;
+}
+
+.item img{
+width:100%;
+height:260px;
+object-fit:cover;
+transition:.4s;
+}
+
+.item:hover img{
+transform:scale(1.1);
+}
+
+/* OVERLAY */
+
+.overlay{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+background:linear-gradient(to top,rgba(0,0,0,0.8),transparent);
+color:white;
+padding:15px;
+opacity:0;
+transition:.4s;
+}
+
+.item:hover .overlay{
+opacity:1;
+}
+
+.overlay h3{
+margin:0;
+font-size:18px;
+}
+
+.overlay p{
+margin:5px 0 0;
+font-size:14px;
+color:#ddd;
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:85%;
+border-radius:10px;
+}
+
+.lightbox span{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+color:white;
+cursor:pointer;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+.title{
+font-size:30px;
+}
+.item img{
+height:200px;
+}
+}
+
+/* FOOTER */
+
+.footer{
+background:#111;
+color:white;
+padding:30px;
+margin-top:40px;
+}
+
+.footer a{
+color:white;
+margin:0 10px;
+text-decoration:none;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+<h1>📸 Gallery</h1>
+<button onclick="history.back()" class="back-btn">⬅ Back</button>
+</div>
+
+<div class="title">Tournament Moments</div>
+<div class="subtitle">Capturing the best moments of the Songhai Gala</div>
+
+<!-- GALLERY -->
+
+<div class="gallery">
+
+<!-- 14 ITEMS -->
+
+<!-- 1 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery1.jpg">
+<div class="overlay">
+<h3>Opening Ceremony</h3>
+<p>Day 1 • Kickoff Celebration</p>
+</div>
+</div>
+
+<!-- 2 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery2.jpg">
+<div class="overlay">
+<h3>Team Arrival</h3>
+<p>Teams registering & gathering</p>
+</div>
+</div>
+
+<!-- 3 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery3.jpg">
+<div class="overlay">
+<h3>First Match</h3>
+<p>Opening match excitement</p>
+</div>
+</div>
+
+<!-- 4 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery4.jpg">
+<div class="overlay">
+<h3>Fans & Crowd</h3>
+<p>Community support</p>
+</div>
+</div>
+
+<!-- 5 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery5.jpg">
+<div class="overlay">
+<h3>Midfield Action</h3>
+<p>Competitive gameplay</p>
+</div>
+</div>
+
+<!-- 6 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery6.jpg">
+<div class="overlay">
+<h3>Goal Moment</h3>
+<p>Celebration scene</p>
+</div>
+</div>
+
+<!-- 7 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery7.jpg">
+<div class="overlay">
+<h3>Halftime Break</h3>
+<p>Strategy discussion</p>
+</div>
+</div>
+
+<!-- 8 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery8.jpg">
+<div class="overlay">
+<h3>Penalty Shootout</h3>
+<p>High tension moment</p>
+</div>
+</div>
+
+<!-- 9 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery9.jpg">
+<div class="overlay">
+<h3>Referee Decision</h3>
+<p>Match control</p>
+</div>
+</div>
+
+<!-- 10 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery10.jpg">
+<div class="overlay">
+<h3>Fans Celebration</h3>
+<p>Energy in the stadium</p>
+</div>
+</div>
+
+<!-- 11 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery11.jpg">
+<div class="overlay">
+<h3>Final Match</h3>
+<p>The big showdown</p>
+</div>
+</div>
+
+<!-- 12 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery12.jpg">
+<div class="overlay">
+<h3>Winning Moment</h3>
+<p>Champions emerge</p>
+</div>
+</div>
+
+<!-- 13 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery13.jpg">
+<div class="overlay">
+<h3>Trophy Ceremony</h3>
+<p>Award presentation</p>
+</div>
+</div>
+
+<!-- 14 -->
+<div class="item" onclick="openLightbox(this)">
+<img src="/static/images/gallery14.jpg">
+<div class="overlay">
+<h3>Closing Ceremony</h3>
+<p>End of tournament</p>
+</div>
+</div>
+
+</div>
+
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+<span onclick="closeLightbox()">×</span>
+<img id="lightbox-img">
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+<p>©️ 2026 Songhai Sallah Tournament</p>
+<div>
+<a href="/payment">Payment</a>
+<a href="/rules">Terms</a>
+<a href="/privacy">Privacy</a>
+<a href="/location">Location</a>
+</div>
+</div>
+
+<script>
+
+function openLightbox(el){
+let img = el.querySelector("img").src;
+document.getElementById("lightbox-img").src = img;
+document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeLightbox(){
+document.getElementById("lightbox").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
