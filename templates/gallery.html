@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Songhai Tournament Gallery</title>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#050510;
+color:white;
+overflow-x:hidden;
+}
+
+/* =========================
+BACKGROUND EFFECTS
+========================= */
+
+.bg1{
+position:fixed;
+width:700px;
+height:700px;
+background:radial-gradient(circle,#7b2cff33,transparent);
+top:-200px;
+right:-200px;
+z-index:-1;
+}
+
+.bg2{
+position:fixed;
+width:600px;
+height:600px;
+background:radial-gradient(circle,#4B008244,transparent);
+bottom:-250px;
+left:-250px;
+z-index:-1;
+}
+
+/* =========================
+HEADER
+========================= */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 30px;
+background:rgba(10,10,25,.94);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,.08);
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+font-size:24px;
+font-weight:900;
+}
+
+.logo img{
+width:55px;
+height:55px;
+border-radius:50%;
+background:white;
+padding:4px;
+object-fit:cover;
+}
+
+.nav{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.nav a{
+text-decoration:none;
+color:white;
+padding:12px 18px;
+border-radius:30px;
+font-weight:bold;
+background:rgba(255,255,255,.05);
+transition:.3s;
+}
+
+.nav a:hover{
+background:#7b2cff;
+transform:translateY(-2px);
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+padding:100px 20px 70px;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to bottom,rgba(0,0,0,.5),rgba(0,0,0,.8));
+z-index:1;
+}
+
+.hero-bg{
+position:absolute;
+width:100%;
+height:100%;
+top:0;
+left:0;
+object-fit:cover;
+z-index:0;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero h1{
+font-size:72px;
+font-weight:900;
+background:linear-gradient(to right,#ffffff,#bb8cff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:22px;
+max-width:950px;
+margin:auto;
+line-height:1.8;
+color:#ddd;
+}
+
+/* =========================
+SECTION
+========================= */
+
+.section{
+width:95%;
+max-width:1500px;
+margin:40px auto;
+padding:40px;
+background:linear-gradient(145deg,#101225,#181b40);
+border-radius:30px;
+border:1px solid rgba(255,255,255,.05);
+box-shadow:0 10px 35px rgba(0,0,0,.35);
+}
+
+.section-title{
+font-size:42px;
+font-weight:900;
+margin-bottom:25px;
+background:linear-gradient(to right,#fff,#a66bff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* =========================
+GALLERY GRID
+========================= */
+
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+}
+
+.gallery-card{
+background:#12142d;
+border-radius:24px;
+overflow:hidden;
+transition:.35s;
+cursor:pointer;
+position:relative;
+box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+.gallery-card:hover{
+transform:translateY(-8px) scale(1.01);
+}
+
+.gallery-card img{
+width:100%;
+height:260px;
+object-fit:cover;
+display:block;
+}
+
+.gallery-content{
+padding:22px;
+}
+
+.gallery-content h3{
+font-size:24px;
+margin-bottom:12px;
+color:#c89cff;
+}
+
+.gallery-content p{
+line-height:1.8;
+color:#ddd;
+font-size:15px;
+}
+
+/* =========================
+VIDEO SECTION
+========================= */
+
+.video-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:25px;
+margin-top:30px;
+}
+
+.video-card{
+background:#12142d;
+border-radius:24px;
+overflow:hidden;
+box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+.video-card iframe{
+width:100%;
+height:260px;
+border:none;
+}
+
+.video-content{
+padding:20px;
+}
+
+.video-content h3{
+margin-bottom:10px;
+color:#c89cff;
+}
+
+/* =========================
+LIGHTBOX
+========================= */
+
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.95);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:99999;
+padding:20px;
+}
+
+.lightbox img{
+max-width:95%;
+max-height:90%;
+border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,.5);
+}
+
+.close-lightbox{
+position:absolute;
+top:25px;
+right:35px;
+font-size:45px;
+color:white;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* =========================
+BUTTONS
+========================= */
+
+.btns{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.btn{
+padding:16px 34px;
+border:none;
+border-radius:40px;
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+.primary{
+background:linear-gradient(90deg,#5f1fff,#933bff);
+color:white;
+box-shadow:0 6px 18px rgba(123,44,255,.35);
+}
+
+.secondary{
+background:#1b1d40;
+color:white;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+}
+
+/* =========================
+FOOTER
+========================= */
+
+.footer{
+margin-top:60px;
+padding:35px;
+text-align:center;
+background:#0a0a18;
+color:#bbb;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+.section-title{
+font-size:30px;
+}
+
+.gallery-card img{
+height:220px;
+}
+
+.video-card iframe{
+height:220px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg1"></div>
+<div class="bg2"></div>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="logo">
+<img src="/static/images/logo.png">
+<span>Songhai Gala</span>
+</div>
+
+<div class="nav">
+<a href="/">Home</a>
+<a href="/register">Register</a>
+<a href="/teams">Teams</a>
+<a href="/fixtures">Fixtures</a>
+<a href="/gallery">Gallery</a>
+<a href="/news">News</a>
+<a href="/rules">Rules</a>
+<a href="/payment">Payment</a>
+<a href="/location">Location</a>
+</div>
+
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<img src="/static/images/slide1.jpg" class="hero-bg">
+
+<div class="hero-content">
+
+<h1>Event Gallery</h1>
+
+<p>
+Explore unforgettable moments from the Songhai Sallah Football Gala Tournament.
+Match highlights, celebrations, community moments, fans, teams and cultural experiences.
+</p>
+
+</div>
+
+</div>
+
+<!-- PHOTO GALLERY -->
+
+<div class="section">
+
+<h2 class="section-title">Tournament Photo Gallery</h2>
+
+<div class="gallery-grid">
+
+<!-- CARD 1 -->
+<div class="gallery-card" onclick="openImage('/static/images/slide1.jpg')">
+<img src="/static/images/slide1.jpg">
+<div class="gallery-content">
+<h3>Opening Ceremony</h3>
+<p>
+Placeholder description for tournament opening ceremony and community celebration.
+</p>
+</div>
+</div>
+
+<!-- CARD 2 -->
+<div class="gallery-card" onclick="openImage('/static/images/slide2.jpg')">
+<img src="/static/images/slide2.jpg">
+<div class="gallery-content">
+<h3>Match Day Atmosphere</h3>
+<p>
+Placeholder description for fans, football energy and match environment.
+</p>
+</div>
+</div>
+
+<!-- CARD 3 -->
+<div class="gallery-card" onclick="openImage('/static/images/slide3.jpg')">
+<img src="/static/images/slide3.jpg">
+<div class="gallery-content">
+<h3>Team Celebration</h3>
+<p>
+Placeholder description for winning team celebration and supporters.
+</p>
+</div>
+</div>
+
+<!-- CARD 4 -->
+<div class="gallery-card" onclick="openImage('/static/images/slide4.jpg')">
+<img src="/static/images/slide4.jpg">
+<div class="gallery-content">
+<h3>Night Match Experience</h3>
+<p>
+Placeholder description for evening tournament lights and football entertainment.
+</p>
+</div>
+</div>
+
+<!-- CARD 5 -->
+<div class="gallery-card" onclick="openImage('/static/images/slide5.jpg')">
+<img src="/static/images/slide5.jpg">
+<div class="gallery-content">
+<h3>Community Unity</h3>
+<p>
+Placeholder description for youth empowerment and community football unity.
+</p>
+</div>
+</div>
+
+<!-- CARD 6 -->
+<div class="gallery-card" onclick="openImage('/static/images/slide6.jpg')">
+<img src="/static/images/slide6.jpg">
+<div class="gallery-content">
+<h3>VIP Guests & Sponsors</h3>
+<p>
+Placeholder description for sponsors, guests and tournament dignitaries.
+</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- VIDEOS -->
+
+<div class="section">
+
+<h2 class="section-title">Tournament Videos</h2>
+
+<div class="video-grid">
+
+<div class="video-card">
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+allowfullscreen></iframe>
+
+<div class="video-content">
+<h3>Opening Match Highlights</h3>
+<p>
+Placeholder description for tournament opening match video highlights.
+</p>
+</div>
+</div>
+
+<div class="video-card">
+<iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"
+allowfullscreen></iframe>
+
+<div class="video-content">
+<h3>Community Event Coverage</h3>
+<p>
+Placeholder description for community activities and tournament moments.
+</p>
+</div>
+</div>
+
+<div class="video-card">
+<iframe src="https://www.youtube.com/embed/oUFJJNQGwhk"
+allowfullscreen></iframe>
+
+<div class="video-content">
+<h3>Final Match Recap</h3>
+<p>
+Placeholder description for final match recap and award presentation.
+</p>
+</div>
+</div>
+
+</div>
+
+<div class="btns">
+
+<button class="btn primary"
+onclick="window.location.href='/news'">
+📰 View Tournament News
+</button>
+
+<button class="btn secondary"
+onclick="window.location.href='/'">
+⬅ Back Home
+</button>
+
+</div>
+
+</div>
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox">
+
+<span class="close-lightbox" onclick="closeImage()">
+×
+</span>
+
+<img id="lightbox-img">
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+© 2026 Songhai Sallah Football Gala Tournament — Ultra Pro Max Gallery System
+</div>
+
+<script>
+
+function openImage(src){
+
+document.getElementById("lightbox").style.display="flex";
+
+document.getElementById("lightbox-img").src=src;
+
+}
+
+function closeImage(){
+
+document.getElementById("lightbox").style.display="none";
+
+}
+
+</script>
+
+</body>
+</html>

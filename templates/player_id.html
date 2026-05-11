@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Songhai Player ID Generator</title>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:linear-gradient(to bottom,#f3ebff,#ffffff);
+overflow-x:hidden;
+}
+
+/* =========================
+HEADER
+========================= */
+
+.header{
+background:linear-gradient(90deg,#4B0082,#111);
+padding:15px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+color:white;
+font-weight:900;
+font-size:24px;
+}
+
+.logo img{
+height:50px;
+width:50px;
+border-radius:50%;
+object-fit:cover;
+background:white;
+padding:4px;
+}
+
+.nav{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+padding:10px 18px;
+border-radius:30px;
+font-size:16px;
+transition:.3s;
+}
+
+.nav a:hover{
+background:white;
+color:#4B0082;
+}
+
+/* =========================
+SLIDER
+========================= */
+
+.slider{
+width:100%;
+height:450px;
+overflow:hidden;
+position:relative;
+}
+
+.slides{
+display:flex;
+width:400%;
+height:100%;
+animation:slide 20s infinite;
+}
+
+.image{
+width:100%;
+height:100%;
+position:relative;
+flex-shrink:0;
+}
+
+.image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* =========================
+OVERLAY
+========================= */
+
+.overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+to bottom,
+rgba(0,0,0,.35),
+rgba(0,0,0,.70)
+);
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+text-align:center;
+padding:20px;
+
+backdrop-filter:blur(2px);
+}
+
+.overlay h1{
+font-size:58px;
+font-weight:900;
+color:white;
+
+text-shadow:
+0 0 10px rgba(0,0,0,.8),
+0 0 20px rgba(75,0,130,.9),
+0 0 30px rgba(0,0,0,.7);
+
+margin-bottom:20px;
+
+background:rgba(0,0,0,.25);
+padding:12px 25px;
+border-radius:20px;
+
+border:2px solid rgba(255,255,255,.15);
+
+animation:fadeUp 1s ease;
+}
+
+.overlay p{
+font-size:22px;
+line-height:1.8;
+max-width:850px;
+
+color:white;
+
+text-shadow:
+0 0 8px rgba(0,0,0,.9);
+
+background:rgba(0,0,0,.35);
+
+padding:18px 25px;
+
+border-radius:18px;
+
+border:1px solid rgba(255,255,255,.1);
+
+animation:fadeUp 1.3s ease;
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+@keyframes slide{
+
+0%{transform:translateX(0);}
+20%{transform:translateX(0);}
+
+25%{transform:translateX(-100%);}
+45%{transform:translateX(-100%);}
+
+50%{transform:translateX(-200%);}
+70%{transform:translateX(-200%);}
+
+75%{transform:translateX(-300%);}
+100%{transform:translateX(-300%);}
+
+}
+
+/* =========================
+MAIN CONTAINER
+========================= */
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* =========================
+FORM AREA
+========================= */
+
+.form-box{
+background:white;
+padding:35px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.1);
+margin-bottom:40px;
+border-top:8px solid #4B0082;
+}
+
+.form-title{
+font-size:38px;
+font-weight:900;
+color:#4B0082;
+margin-bottom:10px;
+text-align:center;
+}
+
+.form-sub{
+text-align:center;
+font-size:18px;
+color:#555;
+margin-bottom:30px;
+line-height:1.7;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+input,
+select{
+padding:15px;
+border-radius:12px;
+border:1px solid #ccc;
+font-size:16px;
+width:100%;
+outline:none;
+transition:.3s;
+}
+
+input:focus,
+select:focus{
+border-color:#4B0082;
+box-shadow:0 0 10px rgba(75,0,130,.15);
+}
+
+.file-box{
+background:#f5efff;
+padding:15px;
+border-radius:15px;
+}
+
+/* =========================
+BUTTONS
+========================= */
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+
+.btn{
+padding:15px 30px;
+border:none;
+border-radius:35px;
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+}
+
+.add-btn{
+background:#4B0082;
+color:white;
+}
+
+.pdf-btn{
+background:#111;
+color:white;
+}
+
+.back-btn{
+background:#d9c0ff;
+color:#111;
+}
+
+.btn:hover{
+transform:translateY(-3px);
+}
+
+/* =========================
+PREVIEW
+========================= */
+
+.preview-title{
+font-size:40px;
+font-weight:900;
+color:#4B0082;
+margin-bottom:25px;
+text-align:center;
+}
+
+.preview{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+gap:25px;
+}
+
+/* =========================
+ID CARD
+========================= */
+
+.id-card{
+height:230px;
+border-radius:22px;
+overflow:hidden;
+position:relative;
+background:linear-gradient(135deg,#4B0082,#120022);
+color:white;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+border:3px solid white;
+}
+
+.card-top{
+height:55px;
+background:rgba(255,255,255,.08);
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:10px 15px;
+}
+
+.card-top img.logo{
+height:42px;
+width:42px;
+border-radius:50%;
+object-fit:cover;
+background:white;
+padding:2px;
+}
+
+.card-title{
+font-size:16px;
+font-weight:900;
+}
+
+.card-body{
+display:flex;
+padding:15px;
+gap:15px;
+}
+
+.player-photo{
+width:95px;
+height:120px;
+border-radius:15px;
+object-fit:cover;
+border:3px solid white;
+background:#eee;
+}
+
+.player-info{
+flex:1;
+font-size:13px;
+line-height:1.8;
+}
+
+.player-info h2{
+font-size:20px;
+margin-bottom:6px;
+color:#fff;
+}
+
+.player-info span{
+font-weight:bold;
+color:#d8b6ff;
+}
+
+.qr-box{
+position:absolute;
+bottom:12px;
+right:12px;
+background:white;
+padding:4px;
+border-radius:10px;
+}
+
+.qr-box img{
+width:55px;
+height:55px;
+}
+
+.watermark{
+position:absolute;
+bottom:-10px;
+left:-10px;
+font-size:90px;
+opacity:.05;
+font-weight:900;
+pointer-events:none;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+.footer{
+margin-top:50px;
+background:#111;
+color:white;
+padding:30px;
+text-align:center;
+font-size:16px;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.overlay h1{
+font-size:30px;
+padding:10px 15px;
+}
+
+.overlay p{
+font-size:16px;
+padding:14px;
+line-height:1.6;
+}
+
+.slider{
+height:300px;
+}
+
+.form-title{
+font-size:28px;
+}
+
+.preview{
+grid-template-columns:1fr;
+}
+
+.id-card{
+height:auto;
+padding-bottom:20px;
+}
+
+.card-body{
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+.player-photo{
+width:120px;
+height:140px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+HEADER
+========================= -->
+
+<div class="header">
+
+<div class="logo">
+<img src="/static/images/logo.png">
+<span>Songhai Gala</span>
+</div>
+
+<div class="nav">
+<a href="/">Home</a>
+<a href="/register">Register</a>
+<a href="/teams">Teams</a>
+<a href="/fixtures">Fixtures</a>
+<a href="/gallery">Gallery</a>
+<a href="/news">News</a>
+<a href="/rules">Rules</a>
+<a href="/payment">Payment</a>
+<a href="/location">Location</a>
+<a href="/player_id">Player ID</a>
+</div>
+
+</div>
+
+<!-- =========================
+SLIDER
+========================= -->
+
+<div class="slider">
+
+<div class="slides">
+
+<div class="image">
+
+<img src="/static/images/slide1.jpg">
+
+<div class="overlay">
+<h1>SONGHAI PLAYER ID SYSTEM</h1>
+<p>
+Create ultra professional player identity cards instantly with QR codes and PDF export.
+</p>
+</div>
+
+</div>
+
+<div class="image">
+
+<img src="/static/images/slide2.jpg">
+
+<div class="overlay">
+<h1>TOURNAMENT VERIFICATION</h1>
+<p>
+Secure player identification for every registered football team and official.
+</p>
+</div>
+
+</div>
+
+<div class="image">
+
+<img src="/static/images/slide3.jpg">
+
+<div class="overlay">
+<h1>MODERN PLAYER CARDS</h1>
+<p>
+Generate beautiful professional football cards with photos, team logos and player details.
+</p>
+</div>
+
+</div>
+
+<div class="image">
+
+<img src="/static/images/slide4.jpg">
+
+<div class="overlay">
+<h1>DOWNLOAD PDF SHEETS</h1>
+<p>
+Print all player cards professionally on A4 PDF format for tournament use.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================
+MAIN CONTENT
+========================= -->
+
+<div class="container">
+
+<div class="form-box">
+
+<h1 class="form-title">
+Ultra Pro Max Player ID Generator
+</h1>
+
+<p class="form-sub">
+Create beautiful professional football identity cards with player photo,
+team logo, QR code, blood group, mobile number and downloadable PDF sheet.
+</p>
+
+<div class="form-grid">
+
+<input type="text" id="team" placeholder="Team Name">
+
+<input type="text" id="name" placeholder="Player Full Name">
+
+<select id="position">
+
+<option>Player Position</option>
+<option>Goalkeeper</option>
+<option>Defender</option>
+<option>Midfielder</option>
+<option>Forward</option>
+
+</select>
+
+<input type="number" id="age" placeholder="Player Age">
+
+<input type="text" id="blood" placeholder="Blood Group">
+
+<input type="text" id="phone" placeholder="Mobile Number">
+
+<div class="file-box">
+<label><b>Upload Player Photo</b></label>
+<input type="file" id="photo" accept=".jpg,.jpeg,.png">
+</div>
+
+<div class="file-box">
+<label><b>Upload Team Logo</b></label>
+<input type="file" id="logo" accept=".jpg,.jpeg,.png">
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button class="btn add-btn" onclick="addPlayer()">
+➕ Add Player
+</button>
+
+<button class="btn pdf-btn" onclick="generatePDF()">
+📄 Download PDF
+</button>
+
+<button class="btn back-btn" onclick="window.location.href='/'">
+⬅ Back Home
+</button>
+
+</div>
+
+</div>
+
+<h2 class="preview-title">
+Player Card Preview
+</h2>
+
+<div class="preview" id="preview"></div>
+
+</div>
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<div class="footer">
+© 2026 Songhai Sallah Football Gala Tournament — Professional Player ID System
+</div>
+
+<script>
+
+let players = [];
+
+function readFile(file){
+
+return new Promise(resolve=>{
+
+const reader = new FileReader();
+
+reader.onload = e => resolve(e.target.result);
+
+reader.onerror = () => {
+alert("Error loading image.");
+};
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+async function addPlayer(){
+
+let team = document.getElementById("team").value;
+
+let name = document.getElementById("name").value;
+
+let position = document.getElementById("position").value;
+
+let age = document.getElementById("age").value;
+
+let blood = document.getElementById("blood").value;
+
+let phone = document.getElementById("phone").value;
+
+let photoInput = document.getElementById("photo");
+
+let logoInput = document.getElementById("logo");
+
+let photo = photoInput.files[0]
+? await readFile(photoInput.files[0])
+: "/static/images/default-player.jpg";
+
+let logo = logoInput.files[0]
+? await readFile(logoInput.files[0])
+: "/static/images/logo.png";
+
+let player = {
+
+team,
+name,
+position,
+age,
+blood,
+phone,
+photo,
+logo
+
+};
+
+players.push(player);
+
+renderCards();
+
+}
+
+function renderCards(){
+
+let preview = document.getElementById("preview");
+
+preview.innerHTML = "";
+
+players.forEach(p=>{
+
+let card = document.createElement("div");
+
+card.className = "id-card";
+
+card.innerHTML = `
+
+<div class="card-top">
+
+<img src="${p.logo}" class="logo">
+
+<div class="card-title">
+SONGHAI PLAYER ID
+</div>
+
+</div>
+
+<div class="card-body">
+
+<img src="${p.photo}" class="player-photo">
+
+<div class="player-info">
+
+<h2>${p.name}</h2>
+
+<div><span>Team:</span> ${p.team}</div>
+
+<div><span>Position:</span> ${p.position}</div>
+
+<div><span>Age:</span> ${p.age}</div>
+
+<div><span>Blood:</span> ${p.blood}</div>
+
+<div><span>Phone:</span> ${p.phone}</div>
+
+</div>
+
+</div>
+
+<div class="qr-box">
+
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${p.name}">
+
+</div>
+
+<div class="watermark">
+⚽
+</div>
+
+`;
+
+preview.appendChild(card);
+
+});
+
+}
+
+function generatePDF(){
+
+fetch("/generate_cards_pdf",{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify(players)
+
+})
+
+.then(res=>res.blob())
+
+.then(blob=>{
+
+let url = window.URL.createObjectURL(blob);
+
+let a = document.createElement("a");
+
+a.href = url;
+
+a.download = "songhai_player_cards.pdf";
+
+a.click();
+
+});
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Songhai Tournament News</title>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#f6f2ff;
+overflow-x:hidden;
+color:#111;
+}
+
+/* =========================
+HEADER
+========================= */
+
+.header{
+background:linear-gradient(90deg,#4B0082,#111);
+padding:15px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+color:white;
+font-size:24px;
+font-weight:900;
+}
+
+.logo img{
+width:55px;
+height:55px;
+border-radius:50%;
+background:white;
+padding:4px;
+object-fit:cover;
+}
+
+.nav{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+padding:10px 18px;
+border-radius:30px;
+font-weight:bold;
+transition:.3s;
+}
+
+.nav a:hover{
+background:white;
+color:#4B0082;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+height:500px;
+position:relative;
+overflow:hidden;
+}
+
+.hero video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.hero-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+to bottom,
+rgba(0,0,0,.35),
+rgba(0,0,0,.75)
+);
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+.hero-overlay h1{
+font-size:65px;
+color:white;
+font-weight:900;
+margin-bottom:20px;
+
+text-shadow:
+0 0 15px rgba(0,0,0,.9),
+0 0 30px rgba(75,0,130,.9);
+}
+
+.hero-overlay p{
+max-width:900px;
+color:white;
+font-size:22px;
+line-height:1.8;
+
+background:rgba(0,0,0,.35);
+padding:18px 25px;
+border-radius:18px;
+}
+
+/* =========================
+BREAKING NEWS
+========================= */
+
+.breaking{
+background:#4B0082;
+color:white;
+padding:15px;
+font-size:18px;
+font-weight:bold;
+overflow:hidden;
+white-space:nowrap;
+}
+
+.breaking span{
+display:inline-block;
+padding-left:100%;
+animation:marquee 18s linear infinite;
+}
+
+@keyframes marquee{
+0%{transform:translateX(0);}
+100%{transform:translateX(-100%);}
+}
+
+/* =========================
+CONTAINER
+========================= */
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:50px 20px;
+}
+
+/* =========================
+SECTION TITLE
+========================= */
+
+.section-title{
+font-size:45px;
+font-weight:900;
+color:#4B0082;
+margin-bottom:35px;
+text-align:center;
+}
+
+/* =========================
+NEWS GRID
+========================= */
+
+.news-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
+gap:30px;
+}
+
+.news-card{
+background:white;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.4s;
+}
+
+.news-card:hover{
+transform:translateY(-8px);
+}
+
+.news-card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.news-content{
+padding:25px;
+}
+
+.news-date{
+background:#4B0082;
+display:inline-block;
+padding:8px 15px;
+border-radius:20px;
+color:white;
+font-size:13px;
+font-weight:bold;
+margin-bottom:15px;
+}
+
+.news-content h2{
+font-size:25px;
+margin-bottom:15px;
+}
+
+.news-content p{
+line-height:1.8;
+color:#555;
+margin-bottom:20px;
+}
+
+.read-btn{
+display:inline-block;
+padding:12px 22px;
+background:#4B0082;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+}
+
+/* =========================
+VIDEO SECTION
+========================= */
+
+.video-section{
+margin-top:70px;
+}
+
+.video-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:30px;
+}
+
+.video-card{
+background:white;
+border-radius:22px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.video-card iframe,
+.video-card video{
+width:100%;
+height:250px;
+border:none;
+}
+
+.video-info{
+padding:20px;
+}
+
+.video-info h3{
+font-size:22px;
+margin-bottom:10px;
+color:#4B0082;
+}
+
+.video-info p{
+line-height:1.7;
+color:#555;
+}
+
+/* =========================
+SPONSORS
+========================= */
+
+.sponsor-section{
+margin-top:80px;
+}
+
+.sponsor-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.sponsor-card{
+background:white;
+padding:25px;
+border-radius:22px;
+text-align:center;
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.sponsor-card:hover{
+transform:translateY(-6px);
+}
+
+.sponsor-card img{
+width:120px;
+height:120px;
+object-fit:contain;
+margin-bottom:15px;
+}
+
+.sponsor-card h3{
+font-size:22px;
+margin-bottom:10px;
+color:#4B0082;
+}
+
+.sponsor-card p{
+color:#666;
+line-height:1.7;
+}
+
+/* =========================
+SOCIAL MEDIA
+========================= */
+
+.social-section{
+margin-top:80px;
+text-align:center;
+}
+
+.social-title{
+font-size:42px;
+font-weight:900;
+color:#4B0082;
+margin-bottom:25px;
+}
+
+.social-icons{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:25px;
+}
+
+.social-icons a{
+width:80px;
+height:80px;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:50%;
+font-size:34px;
+text-decoration:none;
+color:white;
+transition:.3s;
+box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.social-icons a:hover{
+transform:translateY(-8px) scale(1.05);
+}
+
+.facebook{
+background:#1877F2;
+}
+
+.youtube{
+background:#FF0000;
+}
+
+.instagram{
+background:linear-gradient(45deg,#f09433,#dc2743,#bc1888);
+}
+
+.tiktok{
+background:#111;
+}
+
+.snapchat{
+background:#FFFC00;
+color:black !important;
+}
+
+/* =========================
+UPLOAD SECTION
+========================= */
+
+.upload-box{
+background:white;
+padding:35px;
+border-radius:25px;
+margin-top:80px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.upload-box h2{
+font-size:38px;
+color:#4B0082;
+margin-bottom:20px;
+text-align:center;
+}
+
+.upload-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.upload-box input,
+.upload-box textarea{
+width:100%;
+padding:15px;
+border-radius:15px;
+border:1px solid #ccc;
+font-size:16px;
+}
+
+.upload-box textarea{
+height:160px;
+resize:none;
+}
+
+.publish-btn{
+margin-top:25px;
+padding:15px 30px;
+border:none;
+background:#4B0082;
+color:white;
+border-radius:35px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+display:block;
+margin-left:auto;
+margin-right:auto;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+.footer{
+margin-top:70px;
+background:#111;
+color:white;
+padding:40px;
+text-align:center;
+}
+
+.footer h2{
+font-size:30px;
+margin-bottom:15px;
+}
+
+.footer p{
+line-height:1.8;
+color:#ddd;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.hero{
+height:350px;
+}
+
+.hero-overlay h1{
+font-size:34px;
+}
+
+.hero-overlay p{
+font-size:16px;
+line-height:1.7;
+}
+
+.section-title{
+font-size:32px;
+}
+
+.social-icons a{
+width:65px;
+height:65px;
+font-size:28px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+HEADER
+========================= -->
+
+<div class="header">
+
+<div class="logo">
+<img src="/static/images/logo.png">
+<span>SONGHAI SALLAH GALA NEWS CENTER</span>
+</div>
+
+<div class="nav">
+<a href="/">Home</a>
+<a href="/register">Register</a>
+<a href="/teams">Teams</a>
+<a href="/fixtures">Fixtures</a>
+<a href="/gallery">Gallery</a>
+<a href="/news">News</a>
+<a href="/rules">Rules</a>
+<a href="/payment">Payment</a>
+<a href="/location">Location</a>
+<a href="/player_id">Player ID</a>
+</div>
+
+</div>
+
+<!-- =========================
+HERO
+========================= -->
+
+<div class="hero">
+
+<video autoplay muted loop>
+<source src="/static/videos/tournament.mp4" type="video/mp4">
+</video>
+
+<div class="hero-overlay">
+
+<h1>SONGHAI TOURNAMENT NEWS CENTER</h1>
+
+<p>
+Follow tournament updates, football highlights, community activities,
+donations, sponsorship announcements, player stories, and official
+Songhai football media events.
+</p>
+
+</div>
+
+</div>
+
+<!-- =========================
+BREAKING NEWS
+========================= -->
+
+<div class="breaking">
+<span>
+🔥 BREAKING NEWS: Registration now open • Quarter finals approaching • Sponsors joining the tournament • Community donation event successful • New media coverage released
+</span>
+</div>
+
+<!-- =========================
+NEWS SECTION
+========================= -->
+
+<div class="container">
+
+<h1 class="section-title">
+Latest Tournament News
+</h1>
+
+<div class="news-grid">
+
+<div class="news-card">
+
+<img src="/static/images/news1.jpg">
+
+<div class="news-content">
+
+<div class="news-date">
+May 2026
+</div>
+
+<h2>Opening Ceremony Successfully Held</h2>
+
+<p>
+The Songhai Football Gala Tournament officially launched with cultural
+performances, Takamba dance displays, and community football unity activities.
+</p>
+
+<a href="#" class="read-btn">
+Read More
+</a>
+
+</div>
+
+</div>
+
+<div class="news-card">
+
+<img src="/static/images/news2.jpg">
+
+<div class="news-content">
+
+<div class="news-date">
+May 2026
+</div>
+
+<h2>Community Donation Event</h2>
+
+<p>
+Tournament organizers distributed support materials and football equipment
+to youth players and community football development centers.
+</p>
+
+<a href="#" class="read-btn">
+Read More
+</a>
+
+</div>
+
+</div>
+
+<div class="news-card">
+
+<img src="/static/images/news3.jpg">
+
+<div class="news-content">
+
+<div class="news-date">
+May 2026
+</div>
+
+<h2>New Sponsors Join Tournament</h2>
+
+<p>
+Multiple partners and business organizations joined the Songhai Gala
+Tournament sponsorship initiative to support youth empowerment.
+</p>
+
+<a href="#" class="read-btn">
+Read More
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================
+VIDEO MEDIA SECTION
+========================= -->
+
+<div class="video-section">
+
+<h1 class="section-title">
+Tournament Video Media
+</h1>
+
+<div class="video-grid">
+
+<div class="video-card">
+
+<iframe
+src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+allowfullscreen>
+</iframe>
+
+<div class="video-info">
+
+<h3>Opening Match Highlights</h3>
+
+<p>
+Watch the official opening match highlights and tournament atmosphere.
+</p>
+
+</div>
+
+</div>
+
+<div class="video-card">
+
+<video controls>
+<source src="/static/videos/highlight.mp4" type="video/mp4">
+</video>
+
+<div class="video-info">
+
+<h3>Community Football Event</h3>
+
+<p>
+Official community outreach and youth football empowerment activities.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================
+SPONSORS
+========================= -->
+
+<div class="sponsor-section">
+
+<h1 class="section-title">
+Official Sponsors
+</h1>
+
+<div class="sponsor-grid">
+
+<div class="sponsor-card">
+<img src="/static/images/sponsor1.png">
+<h3>Main Sponsor</h3>
+<p>Official tournament partner supporting football development.</p>
+</div>
+
+<div class="sponsor-card">
+<img src="/static/images/sponsor2.png">
+<h3>Media Partner</h3>
+<p>Providing media visibility and tournament promotion support.</p>
+</div>
+
+<div class="sponsor-card">
+<img src="/static/images/sponsor3.png">
+<h3>Community Partner</h3>
+<p>Supporting youth empowerment and sports education initiatives.</p>
+</div>
+
+<div class="sponsor-card">
+<img src="/static/images/sponsor4.png">
+<h3>Official Supporter</h3>
+<p>Helping build stronger community football programs and events.</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================
+UPLOAD AREA
+========================= -->
+
+<div class="upload-box">
+
+<h2>
+Publish News & Media
+</h2>
+
+<div class="upload-grid">
+
+<input type="text" placeholder="News Title">
+
+<input type="text" placeholder="Author / Organizer">
+
+<input type="file">
+
+<input type="file">
+
+<textarea placeholder="Write your news or event story here..."></textarea>
+
+</div>
+
+<button class="publish-btn">
+📢 Publish News
+</button>
+
+</div>
+
+<!-- =========================
+SOCIAL MEDIA
+========================= -->
+
+<div class="social-section">
+
+<h1 class="social-title">
+Follow Us On Social Media
+</h1>
+
+<div class="social-icons">
+
+<a href="#" class="facebook">
+<i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="#" class="youtube">
+<i class="fab fa-youtube"></i>
+</a>
+
+<a href="#" class="instagram">
+<i class="fab fa-instagram"></i>
+</a>
+
+<a href="#" class="tiktok">
+<i class="fab fa-tiktok"></i>
+</a>
+
+<a href="#" class="snapchat">
+<i class="fab fa-snapchat-ghost"></i>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<div class="footer">
+
+<h2>
+Songhai Sallah Football Gala Tournament
+</h2>
+
+<p>
+Promoting unity, football excellence, youth empowerment,
+culture and community development through sports.
+</p>
+
+</div>
+
+</body>
+</html>

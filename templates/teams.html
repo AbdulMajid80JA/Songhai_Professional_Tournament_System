@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SONGHAI ULTRA PRO MAX TEAMS SYSTEM</title>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:
+linear-gradient(rgba(8,8,18,.93),rgba(8,8,18,.96)),
+url('/static/images/slide2.jpg');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:white;
+overflow-x:hidden;
+}
+
+/* =========================
+TOP HEADER
+========================= */
+
+.top-header{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,.08);
+padding:18px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo-area{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo-area img{
+width:60px;
+height:60px;
+border-radius:50%;
+background:white;
+padding:4px;
+object-fit:cover;
+box-shadow:0 0 18px rgba(255,255,255,.25);
+}
+
+.logo-text h1{
+font-size:24px;
+font-weight:900;
+line-height:1.2;
+}
+
+.logo-text span{
+font-size:13px;
+color:#c4b5fd;
+}
+
+.nav-links{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+padding:12px 18px;
+border-radius:30px;
+font-size:14px;
+font-weight:600;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+transition:.3s;
+}
+
+.nav-links a:hover{
+background:#6d28d9;
+transform:translateY(-3px);
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+padding:70px 20px 40px;
+text-align:center;
+}
+
+.hero h1{
+font-size:65px;
+font-weight:900;
+background:linear-gradient(to right,#ffffff,#c084fc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:15px;
+}
+
+.hero p{
+max-width:900px;
+margin:auto;
+font-size:19px;
+line-height:1.9;
+color:#ddd;
+}
+
+/* =========================
+TOP STATS
+========================= */
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:25px;
+padding:20px 40px;
+max-width:1450px;
+margin:auto;
+}
+
+.stat-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:28px;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+transition:.4s;
+position:relative;
+overflow:hidden;
+}
+
+.stat-card:hover{
+transform:translateY(-8px);
+}
+
+.stat-card::before{
+content:'';
+position:absolute;
+top:-40px;
+right:-40px;
+width:120px;
+height:120px;
+background:rgba(255,255,255,.05);
+border-radius:50%;
+}
+
+.stat-icon{
+font-size:50px;
+margin-bottom:15px;
+}
+
+.stat-number{
+font-size:52px;
+font-weight:900;
+color:#c084fc;
+margin-bottom:8px;
+}
+
+.stat-title{
+font-size:18px;
+font-weight:700;
+}
+
+/* =========================
+SEARCH AREA
+========================= */
+
+.search-wrapper{
+max-width:1350px;
+margin:35px auto;
+padding:0 30px;
+}
+
+.search-box{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+padding:25px;
+border-radius:30px;
+display:flex;
+gap:15px;
+justify-content:center;
+align-items:center;
+flex-wrap:wrap;
+backdrop-filter:blur(10px);
+}
+
+.search-box input{
+padding:16px 20px;
+width:320px;
+border:none;
+outline:none;
+border-radius:40px;
+background:rgba(255,255,255,.08);
+color:white;
+font-size:15px;
+}
+
+.search-box input::placeholder{
+color:#ccc;
+}
+
+.search-btn,
+.export-btn,
+.back-btn{
+padding:15px 24px;
+border:none;
+border-radius:40px;
+font-weight:700;
+font-size:14px;
+cursor:pointer;
+transition:.3s;
+text-decoration:none;
+display:inline-block;
+}
+
+.search-btn{
+background:linear-gradient(90deg,#6d28d9,#111827);
+color:white;
+}
+
+.export-btn{
+background:linear-gradient(90deg,#059669,#111827);
+color:white;
+}
+
+.back-btn{
+background:white;
+color:#4B0082;
+}
+
+.search-btn:hover,
+.export-btn:hover,
+.back-btn:hover{
+transform:translateY(-4px);
+}
+
+/* =========================
+TEAM GRID
+========================= */
+
+.team-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:30px;
+padding:20px 40px 80px;
+max-width:1600px;
+margin:auto;
+}
+
+/* =========================
+TEAM CARD
+========================= */
+
+.team-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+border-radius:35px;
+overflow:hidden;
+position:relative;
+box-shadow:0 12px 35px rgba(0,0,0,.3);
+transition:.4s;
+}
+
+.team-card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 45px rgba(0,0,0,.45);
+}
+
+.team-banner{
+height:170px;
+position:relative;
+overflow:hidden;
+}
+
+.team-banner img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.team-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,.2));
+display:flex;
+align-items:flex-end;
+padding:20px;
+}
+
+.team-title{
+font-size:28px;
+font-weight:900;
+color:white;
+text-shadow:0 3px 8px rgba(0,0,0,.4);
+}
+
+.team-content{
+padding:28px;
+}
+
+.info-row{
+display:flex;
+justify-content:space-between;
+gap:15px;
+padding:12px 0;
+border-bottom:1px solid rgba(255,255,255,.08);
+font-size:15px;
+}
+
+.info-label{
+font-weight:700;
+color:#c4b5fd;
+}
+
+.info-value{
+font-weight:500;
+color:white;
+text-align:right;
+}
+
+.status-approved{
+display:inline-block;
+padding:10px 18px;
+background:#16a34a;
+border-radius:30px;
+font-size:13px;
+font-weight:700;
+margin-top:15px;
+}
+
+.status-pending{
+display:inline-block;
+padding:10px 18px;
+background:#d97706;
+border-radius:30px;
+font-size:13px;
+font-weight:700;
+margin-top:15px;
+}
+
+/* =========================
+ROSTER
+========================= */
+
+.roster-box{
+margin-top:20px;
+background:rgba(255,255,255,.05);
+padding:18px;
+border-radius:20px;
+max-height:130px;
+overflow:auto;
+font-size:14px;
+line-height:1.8;
+color:#eee;
+border:1px solid rgba(255,255,255,.06);
+}
+
+.roster-box::-webkit-scrollbar{
+width:5px;
+}
+
+.roster-box::-webkit-scrollbar-thumb{
+background:#6d28d9;
+border-radius:20px;
+}
+
+/* =========================
+PAYMENT
+========================= */
+
+.payment-box{
+margin-top:20px;
+}
+
+.payment-box img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:20px;
+border:2px solid rgba(255,255,255,.08);
+}
+
+/* =========================
+ACTIONS
+========================= */
+
+.actions{
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+margin-top:25px;
+}
+
+.btn{
+padding:13px 18px;
+border-radius:30px;
+text-decoration:none;
+font-weight:700;
+font-size:13px;
+transition:.3s;
+display:inline-block;
+}
+
+.approve{
+background:linear-gradient(90deg,#16a34a,#065f46);
+color:white;
+}
+
+.reject{
+background:linear-gradient(90deg,#111,#333);
+color:white;
+}
+
+.delete{
+background:linear-gradient(90deg,#dc2626,#7f1d1d);
+color:white;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* =========================
+EMPTY
+========================= */
+
+.empty-box{
+text-align:center;
+padding:80px 20px;
+font-size:22px;
+color:#ddd;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+.footer{
+background:#08080f;
+padding:35px;
+text-align:center;
+color:#aaa;
+font-size:15px;
+border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.team-grid{
+padding:20px;
+grid-template-columns:1fr;
+}
+
+.top-header{
+padding:18px;
+flex-direction:column;
+gap:15px;
+}
+
+.search-box{
+padding:20px;
+}
+
+.search-box input{
+width:100%;
+}
+
+.stats-grid{
+padding:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+HEADER
+========================= -->
+
+<div class="top-header">
+
+<div class="logo-area">
+
+<img src="/static/images/logo.png">
+
+<div class="logo-text">
+<h1>SONGHAI SALLA GALA TEAMS MANAGEMNET</h1>
+<span>Get Your Team Registered Easily</span>
+</div>
+
+</div>
+
+<div class="nav-links">
+
+<a href="/">Home</a>
+<a href="/register">Register</a>
+<a href="/fixtures">Fixtures</a>
+<a href="/gallery">Gallery</a>
+<a href="/news">News</a>
+<a href="/rules">Rules</a>
+
+</div>
+
+</div>
+
+<!-- =========================
+HERO
+========================= -->
+
+<div class="hero">
+
+<h1>REGISTERED TOURNAMENT TEAMS</h1>
+
+<p>
+Manage all football clubs registered in the Songhai Sallah Football Gala Tournament.
+Review team details, player rosters, payment proofs, approvals and official club logos.
+</p>
+
+</div>
+
+<!-- =========================
+STATS
+========================= -->
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<div class="stat-icon">⚽</div>
+<div class="stat-number">{{teams|length}}</div>
+<div class="stat-title">Registered Teams</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-icon">✅</div>
+<div class="stat-number">
+{{ teams|selectattr('approved')|list|length }}
+</div>
+<div class="stat-title">Approved Teams</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-icon">📋</div>
+<div class="stat-number">25</div>
+<div class="stat-title">Max Players Per Team</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-icon">🏆</div>
+<div class="stat-number">2026</div>
+<div class="stat-title">Tournament Edition</div>
+</div>
+
+</div>
+
+<!-- =========================
+SEARCH
+========================= -->
+
+<div class="search-wrapper">
+
+<form class="search-box">
+
+<input
+type="text"
+name="q"
+placeholder="Search registered team..."
+value="{{q}}"
+>
+
+<button type="submit" class="search-btn">
+🔍 Search Team
+</button>
+
+<a href="/export_pdf" class="export-btn">
+📄 Export PDF
+</a>
+
+<button
+type="button"
+onclick="history.back()"
+class="back-btn"
+>
+⬅ Back
+</button>
+
+</form>
+
+</div>
+
+<!-- =========================
+TEAM GRID
+========================= -->
+
+<div class="team-grid">
+
+{% if teams %}
+
+{% for t in teams %}
+
+<div class="team-card">
+
+<div class="team-banner">
+
+{% if t['logo'] %}
+
+<img src="/uploads/{{t['logo']}}">
+
+{% else %}
+
+<img src="/static/images/logo.png">
+
+{% endif %}
+
+<div class="team-overlay">
+
+<div class="team-title">
+{{t['team_name']}}
+</div>
+
+</div>
+
+</div>
+
+<div class="team-content">
+
+<div class="info-row">
+<div class="info-label">Manager</div>
+<div class="info-value">{{t['manager']}}</div>
+</div>
+
+<div class="info-row">
+<div class="info-label">Coach</div>
+<div class="info-value">{{t['coach']}}</div>
+</div>
+
+<div class="info-row">
+<div class="info-label">Captain</div>
+<div class="info-value">{{t['captain']}}</div>
+</div>
+
+<div class="info-row">
+<div class="info-label">Players</div>
+<div class="info-value">{{t['players']}}</div>
+</div>
+
+<div class="info-row">
+<div class="info-label">Tournament Year</div>
+<div class="info-value">{{t['year']}}</div>
+</div>
+
+{% if t['approved'] == 1 %}
+
+<div class="status-approved">
+✅ Approved Team
+</div>
+
+{% else %}
+
+<div class="status-pending">
+⌛ Pending Approval
+</div>
+
+{% endif %}
+
+{% if t['payment_proof'] %}
+
+<div class="payment-box">
+
+<h3 style="margin-bottom:12px;">
+💰 Payment Proof
+</h3>
+
+<img src="/uploads/{{t['payment_proof']}}">
+
+</div>
+
+{% endif %}
+
+{% if t['roster'] %}
+
+<h3 style="margin-top:25px;">
+👥 Player Roster
+</h3>
+
+<div class="roster-box">
+
+{{ t['roster'].replace(',', ', ') }}
+
+</div>
+
+{% endif %}
+
+<div class="actions">
+
+<a
+class="btn approve"
+href="/approve/{{t['id']}}"
+>
+✅ Approve
+</a>
+
+<a
+class="btn reject"
+href="/reject/{{t['id']}}"
+>
+⚫ Reject
+</a>
+
+<a
+class="btn delete"
+href="/delete/{{t['id']}}"
+onclick="return confirm('Delete this team?')"
+>
+🗑 Delete
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<div class="empty-box">
+
+<h2>No Registered Teams Found</h2>
+
+<p style="margin-top:15px;">
+Teams registered through register.html will appear here automatically.
+</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<div class="footer">
+
+© 2026 SONGHAI SALLAH FOOTBALL GALA —
+TEAMS MANAGEMENT SYSTEM
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Songhai Tournament Registration</title>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#f4f4f4;
+overflow-x:hidden;
+}
+
+/* =========================
+HEADER
+========================= */
+
+.header{
+background:linear-gradient(90deg,#4B0082,#111);
+padding:15px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:1000;
+box-shadow:0 4px 12px rgba(0,0,0,.2);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+color:white;
+font-size:24px;
+font-weight:900;
+}
+
+.logo img{
+width:55px;
+height:55px;
+border-radius:50%;
+object-fit:cover;
+background:white;
+padding:4px;
+}
+
+.nav{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+padding:10px 18px;
+border-radius:30px;
+font-weight:bold;
+transition:.3s;
+}
+
+.nav a:hover{
+background:white;
+color:#4B0082;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+height:420px;
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),
+url('/static/images/slide1.jpg');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+color:white;
+}
+
+.hero-content h1{
+font-size:58px;
+font-weight:900;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:22px;
+max-width:900px;
+line-height:1.8;
+}
+
+/* =========================
+CONTAINER
+========================= */
+
+.container{
+max-width:1400px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* =========================
+FORM BOX
+========================= */
+
+.form-box{
+background:white;
+border-radius:30px;
+padding:40px;
+box-shadow:0 10px 30px rgba(0,0,0,.12);
+border-top:8px solid #4B0082;
+margin-top:-90px;
+position:relative;
+z-index:100;
+}
+
+.form-title{
+font-size:42px;
+font-weight:900;
+color:#4B0082;
+text-align:center;
+margin-bottom:10px;
+}
+
+.form-sub{
+text-align:center;
+color:#666;
+font-size:18px;
+margin-bottom:35px;
+line-height:1.7;
+}
+
+/* =========================
+GRID
+========================= */
+
+.form-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+margin-bottom:25px;
+}
+
+input,
+select{
+width:100%;
+padding:15px;
+border-radius:14px;
+border:1px solid #ccc;
+font-size:16px;
+outline:none;
+transition:.3s;
+}
+
+input:focus,
+select:focus{
+border-color:#4B0082;
+box-shadow:0 0 10px rgba(75,0,130,.15);
+}
+
+/* =========================
+UPLOAD BOX
+========================= */
+
+.upload-box{
+background:#f5efff;
+padding:18px;
+border-radius:18px;
+border:2px dashed #b28cff;
+}
+
+.upload-box label{
+font-weight:bold;
+display:block;
+margin-bottom:10px;
+color:#4B0082;
+}
+
+/* =========================
+PLAYER ROSTER
+========================= */
+
+.roster-section{
+margin-top:30px;
+}
+
+.roster-title{
+font-size:28px;
+font-weight:900;
+color:#4B0082;
+margin-bottom:20px;
+}
+
+.players-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:15px;
+}
+
+/* =========================
+PREVIEW
+========================= */
+
+.preview-box{
+margin-top:40px;
+background:linear-gradient(135deg,#4B0082,#120022);
+border-radius:25px;
+padding:30px;
+color:white;
+display:flex;
+gap:25px;
+flex-wrap:wrap;
+align-items:center;
+}
+
+.preview-logo{
+width:120px;
+height:120px;
+border-radius:20px;
+background:white;
+object-fit:cover;
+padding:6px;
+}
+
+.preview-info h2{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.preview-info p{
+font-size:18px;
+margin-bottom:8px;
+}
+
+/* =========================
+BUTTONS
+========================= */
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.btn{
+padding:16px 35px;
+border:none;
+border-radius:40px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+}
+
+.register-btn{
+background:#4B0082;
+color:white;
+}
+
+.reset-btn{
+background:#111;
+color:white;
+}
+
+.back-btn{
+background:#ddd;
+}
+
+.btn:hover{
+transform:translateY(-4px);
+}
+
+/* =========================
+FOOTER
+========================= */
+
+.footer{
+margin-top:60px;
+background:#111;
+color:white;
+text-align:center;
+padding:35px;
+font-size:16px;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.hero{
+height:320px;
+}
+
+.hero-content h1{
+font-size:34px;
+}
+
+.hero-content p{
+font-size:16px;
+}
+
+.form-title{
+font-size:30px;
+}
+
+.preview-box{
+flex-direction:column;
+text-align:center;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+HEADER
+========================= -->
+
+<div class="header">
+
+<div class="logo">
+<img src="/static/images/logo.png">
+<span>SONGHAI SALLAH GALA REGISTRATION BOARD</span>
+</div>
+
+<div class="nav">
+<a href="/">Home</a>
+<a href="/register">Register</a>
+<a href="/teams">Teams</a>
+<a href="/fixtures">Fixtures</a>
+<a href="/gallery">Gallery</a>
+<a href="/news">News</a>
+<a href="/rules">Rules</a>
+<a href="/payment">Payment</a>
+<a href="/location">Location</a>
+<a href="/player_id">Player ID</a>
+</div>
+
+</div>
+
+<!-- =========================
+HERO
+========================= -->
+
+<div class="hero">
+
+<div class="hero-content">
+
+<h1>TEAM REGISTRATION PORTAL</h1>
+
+<p>
+Register your football club officially into the Songhai Sallah Football Gala Tournament with professional team verification, logo upload, roster registration and automatic fixture integration.
+</p>
+
+</div>
+
+</div>
+
+<!-- =========================
+MAIN
+========================= -->
+
+<div class="container">
+
+<div class="form-box">
+
+<h1 class="form-title">Songhai Sallah Gala Tournament Registration</h1>
+
+<p class="form-sub">
+Complete your official team registration below. All registered teams automatically appear in Teams, Fixtures and Tournament Administration.
+</p>
+
+<form action="/register" method="POST" enctype="multipart/form-data">
+
+<div class="form-grid">
+
+<input type="text" name="team_name" id="team_name" placeholder="Team Name" required>
+
+<input type="text" name="manager" placeholder="Manager Name" required>
+
+<input type="text" name="coach" placeholder="Coach Name" required>
+
+<input type="text" name="captain" placeholder="Captain Name" required>
+
+<select name="players" required>
+<option value="">Number of Players</option>
+
+<script>
+for(let i=1;i<=25;i++){
+document.write(`<option value="${i}">${i} Players</option>`);
+}
+</script>
+
+</select>
+
+<input type="text" name="year" placeholder="Tournament Year" value="2026" required>
+
+<select name="payment" required>
+<option value="">Payment Method</option>
+<option>Cash</option>
+<option>Bank Transfer</option>
+<option>Mobile Money</option>
+</select>
+
+</div>
+
+<!-- =========================
+UPLOADS
+========================= -->
+
+<div class="form-grid">
+
+<div class="upload-box">
+
+<label>Upload Team Logo</label>
+
+<input type="file"
+name="team_logo"
+id="team_logo"
+accept="image/*"
+onchange="previewLogo(event)"
+required>
+
+</div>
+
+<div class="upload-box">
+
+<label>Upload Payment Proof</label>
+
+<input type="file"
+name="payment_proof"
+accept="image/*"
+required>
+
+</div>
+
+</div>
+
+<!-- =========================
+ROSTER
+========================= -->
+
+<div class="roster-section">
+
+<h2 class="roster-title">Player Roster (Maximum 25 Players)</h2>
+
+<div class="players-grid">
+
+<input type="text" name="player1" placeholder="Player 1">
+<input type="text" name="player2" placeholder="Player 2">
+<input type="text" name="player3" placeholder="Player 3">
+<input type="text" name="player4" placeholder="Player 4">
+<input type="text" name="player5" placeholder="Player 5">
+<input type="text" name="player6" placeholder="Player 6">
+<input type="text" name="player7" placeholder="Player 7">
+<input type="text" name="player8" placeholder="Player 8">
+<input type="text" name="player9" placeholder="Player 9">
+<input type="text" name="player10" placeholder="Player 10">
+<input type="text" name="player11" placeholder="Player 11">
+<input type="text" name="player12" placeholder="Player 12">
+<input type="text" name="player13" placeholder="Player 13">
+<input type="text" name="player14" placeholder="Player 14">
+<input type="text" name="player15" placeholder="Player 15">
+<input type="text" name="player16" placeholder="Player 16">
+<input type="text" name="player17" placeholder="Player 17">
+<input type="text" name="player18" placeholder="Player 18">
+<input type="text" name="player19" placeholder="Player 19">
+<input type="text" name="player20" placeholder="Player 20">
+<input type="text" name="player21" placeholder="Player 21">
+<input type="text" name="player22" placeholder="Player 22">
+<input type="text" name="player23" placeholder="Player 23">
+<input type="text" name="player24" placeholder="Player 24">
+<input type="text" name="player25" placeholder="Player 25">
+
+</div>
+
+</div>
+
+<!-- =========================
+PREVIEW
+========================= -->
+
+<div class="preview-box">
+
+<img src="/static/images/logo.png"
+id="logoPreview"
+class="preview-logo">
+
+<div class="preview-info">
+
+<h2 id="previewTeam">
+Team Preview
+</h2>
+
+<p>✔ Official Tournament Registration</p>
+
+<p>✔ Automatic Fixture Integration</p>
+
+<p>✔ Teams Page Visibility</p>
+
+<p>✔ PDF Registration Slip Generation</p>
+
+</div>
+
+</div>
+
+<!-- =========================
+BUTTONS
+========================= -->
+
+<div class="buttons">
+
+<button type="submit" class="btn register-btn">
+⚽ Register Team
+</button>
+
+<button type="reset" class="btn reset-btn">
+🗑 Reset Form
+</button>
+
+<button type="button"
+class="btn back-btn"
+onclick="window.location.href='/'">
+⬅ Back Home
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<div class="footer">
+
+© 2026 Songhai Sallah Football Gala Tournament — Professional Registration System
+
+</div>
+
+<script>
+
+/* =========================
+TEAM NAME LIVE PREVIEW
+========================= */
+
+document.getElementById("team_name")
+.addEventListener("input",function(){
+
+document.getElementById("previewTeam")
+.innerText = this.value || "Team Preview";
+
+});
+
+/* =========================
+LOGO PREVIEW
+========================= */
+
+function previewLogo(event){
+
+const file = event.target.files[0];
+
+if(file){
+
+const reader = new FileReader();
+
+reader.onload = function(e){
+
+document.getElementById("logoPreview")
+.src = e.target.result;
+
+}
+
+reader.readAsDataURL(file);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

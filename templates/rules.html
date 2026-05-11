@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Songhai Tournament Rules</title>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#0b0616;
+color:white;
+overflow-x:hidden;
+}
+
+/* =========================
+BACKGROUND EFFECT
+========================= */
+
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top left,#4B0082 0%,transparent 30%),
+radial-gradient(circle at bottom right,#6a00ff 0%,transparent 25%);
+z-index:-1;
+opacity:.25;
+}
+
+/* =========================
+HEADER
+========================= */
+
+.header{
+background:rgba(15,15,25,.95);
+backdrop-filter:blur(12px);
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+position:sticky;
+top:0;
+z-index:1000;
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+font-size:24px;
+font-weight:900;
+}
+
+.logo img{
+width:55px;
+height:55px;
+border-radius:50%;
+background:white;
+padding:4px;
+object-fit:cover;
+}
+
+.nav{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.nav a{
+text-decoration:none;
+color:white;
+padding:12px 20px;
+border-radius:30px;
+font-weight:bold;
+transition:.3s;
+}
+
+.nav a:hover{
+background:#6a00ff;
+transform:translateY(-2px);
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+height:520px;
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
+url('/static/images/slide1.jpg');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+position:relative;
+}
+
+.hero::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(to top,#0b0616,transparent);
+bottom:0;
+left:0;
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:900px;
+}
+
+.hero h1{
+font-size:70px;
+font-weight:900;
+margin-bottom:20px;
+text-shadow:0 5px 20px rgba(0,0,0,.5);
+}
+
+.hero p{
+font-size:22px;
+line-height:1.8;
+color:#ddd;
+}
+
+/* =========================
+STATS
+========================= */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+padding:50px 6%;
+margin-top:-70px;
+position:relative;
+z-index:5;
+}
+
+.stat-card{
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(14px);
+padding:30px;
+border-radius:25px;
+text-align:center;
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+box-shadow:0 10px 25px rgba(0,0,0,.25);
+}
+
+.stat-card:hover{
+transform:translateY(-8px);
+border-color:#7d3cff;
+}
+
+.stat-card i{
+font-size:45px;
+margin-bottom:18px;
+color:#b97dff;
+}
+
+.stat-card h2{
+font-size:40px;
+margin-bottom:8px;
+}
+
+.stat-card p{
+color:#ccc;
+}
+
+/* =========================
+SECTION TITLE
+========================= */
+
+.section-title{
+text-align:center;
+font-size:52px;
+margin:70px 0 25px;
+font-weight:900;
+color:#d9b8ff;
+}
+
+/* =========================
+RULES GRID
+========================= */
+
+.rules-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:28px;
+padding:0 6% 60px;
+}
+
+.rule-card{
+background:rgba(255,255,255,.05);
+border-radius:25px;
+padding:35px;
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+position:relative;
+overflow:hidden;
+}
+
+.rule-card:hover{
+transform:translateY(-8px);
+border-color:#7d3cff;
+box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+
+.rule-card::before{
+content:"";
+position:absolute;
+width:140px;
+height:140px;
+background:#6a00ff;
+border-radius:50%;
+top:-50px;
+right:-50px;
+opacity:.12;
+}
+
+.rule-card i{
+font-size:45px;
+margin-bottom:20px;
+color:#b97dff;
+}
+
+.rule-card h3{
+font-size:28px;
+margin-bottom:15px;
+}
+
+.rule-card p{
+line-height:1.9;
+color:#ddd;
+font-size:16px;
+}
+
+/* =========================
+TIMELINE
+========================= */
+
+.timeline{
+width:90%;
+max-width:1100px;
+margin:70px auto;
+position:relative;
+}
+
+.timeline::before{
+content:"";
+position:absolute;
+left:50%;
+width:4px;
+height:100%;
+background:#6a00ff;
+transform:translateX(-50%);
+}
+
+.timeline-item{
+width:50%;
+padding:25px;
+position:relative;
+}
+
+.timeline-item:nth-child(odd){
+left:0;
+text-align:right;
+}
+
+.timeline-item:nth-child(even){
+left:50%;
+}
+
+.timeline-content{
+background:rgba(255,255,255,.06);
+padding:25px;
+border-radius:20px;
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.timeline-content h3{
+margin-bottom:10px;
+color:#d7b2ff;
+}
+
+/* =========================
+MEDIA
+========================= */
+
+.media-section{
+padding:50px 6%;
+}
+
+.media-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+}
+
+.video-box{
+background:#111;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.video-box iframe{
+width:100%;
+height:250px;
+border:none;
+}
+
+.video-info{
+padding:20px;
+}
+
+.video-info h3{
+margin-bottom:10px;
+}
+
+/* =========================
+GALLERY
+========================= */
+
+.gallery{
+padding:50px 6%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+height:240px;
+object-fit:cover;
+border-radius:20px;
+transition:.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.04);
+}
+
+/* =========================
+SOCIALS
+========================= */
+
+.socials{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+padding:50px 20px;
+}
+
+.socials a{
+width:70px;
+height:70px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:rgba(255,255,255,.06);
+border-radius:50%;
+font-size:28px;
+color:white;
+text-decoration:none;
+transition:.4s;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.socials a:hover{
+background:#6a00ff;
+transform:translateY(-6px);
+}
+
+/* =========================
+DOWNLOAD SECTION
+========================= */
+
+.downloads{
+padding:60px 6%;
+text-align:center;
+}
+
+.download-btn{
+display:inline-block;
+margin:15px;
+padding:18px 35px;
+background:#6a00ff;
+border-radius:40px;
+text-decoration:none;
+color:white;
+font-weight:bold;
+font-size:18px;
+transition:.3s;
+}
+
+.download-btn:hover{
+transform:translateY(-4px);
+background:#8a2eff;
+}
+
+/* =========================
+CONTACT
+========================= */
+
+.contact-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+padding:50px 6%;
+}
+
+.contact-card{
+background:rgba(255,255,255,.05);
+padding:30px;
+border-radius:25px;
+text-align:center;
+border:1px solid rgba(255,255,255,.08);
+transition:.3s;
+}
+
+.contact-card:hover{
+transform:translateY(-5px);
+border-color:#6a00ff;
+}
+
+.contact-card i{
+font-size:45px;
+margin-bottom:15px;
+color:#b97dff;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+.footer{
+background:#05020c;
+padding:40px 20px;
+text-align:center;
+margin-top:60px;
+border-top:1px solid rgba(255,255,255,.08);
+}
+
+.footer h2{
+margin-bottom:15px;
+}
+
+.footer p{
+color:#aaa;
+line-height:1.8;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:900px){
+
+.hero h1{
+font-size:45px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.section-title{
+font-size:38px;
+}
+
+.timeline::before{
+left:20px;
+}
+
+.timeline-item{
+width:100%;
+left:0 !important;
+padding-left:60px;
+text-align:left !important;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="logo">
+<img src="/static/images/logo.png">
+<span>SONGHAI SALLAH GALA RULES</span>
+</div>
+
+<div class="nav">
+<a href="/">Home</a>
+<a href="/register">Register</a>
+<a href="/teams">Teams</a>
+<a href="/fixtures">Fixtures</a>
+<a href="/gallery">Gallery</a>
+<a href="/news">News</a>
+<a href="/rules">Rules</a>
+<a href="/payment">Payment</a>
+<a href="/location">Location</a>
+<a href="/player_id">Player ID</a>
+</div>
+
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<div class="hero-content">
+
+<h1>
+OFFICIAL TOURNAMENT RULES
+</h1>
+
+<p>
+Welcome to the Songhai Sallah Football Gala Tournament official regulations center.
+All participating teams, officials and supporters must follow these tournament
+rules to ensure fairness, discipline, professionalism and sporting excellence.
+</p>
+
+</div>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat-card">
+<i class="fas fa-users"></i>
+<h2>16</h2>
+<p>Maximum Teams</p>
+</div>
+
+<div class="stat-card">
+<i class="fas fa-futbol"></i>
+<h2>50</h2>
+<p>Minutes Per Match</p>
+</div>
+
+<div class="stat-card">
+<i class="fas fa-user-check"></i>
+<h2>25</h2>
+<p>Maximum Players</p>
+</div>
+
+<div class="stat-card">
+<i class="fas fa-trophy"></i>
+<h2>4</h2>
+<p>Tournament Groups</p>
+</div>
+
+</div>
+
+<!-- RULES -->
+
+<h1 class="section-title">
+Tournament Regulations
+</h1>
+
+<div class="rules-grid">
+
+<div class="rule-card">
+<i class="fas fa-id-card"></i>
+<h3>Player Eligibility</h3>
+<p>
+All participating players must be officially registered before the tournament starts.
+No unregistered player will be allowed to participate in any match.
+</p>
+</div>
+
+<div class="rule-card">
+<i class="fas fa-clock"></i>
+<h3>Match Duration</h3>
+<p>
+Each match consists of two halves of 20 minutes each with a halftime break of 5 minutes.
+Tournament organizers may adjust timing if necessary.
+</p>
+</div>
+
+<div class="rule-card">
+<i class="fas fa-user-shield"></i>
+<h3>Discipline</h3>
+<p>
+Violence, insults, misconduct or dangerous play can result in suspension or complete
+disqualification from the tournament in the worst situations police intervention will take palce.
+</p>
+</div>
+
+<div class="rule-card">
+<i class="fas fa-people-group"></i>
+<h3>Substitutions</h3>
+<p>
+Each team is allowed substitutions according to tournament regulations.
+Players substituted may return depending on match rules unless ruled out by the match rules.
+</p>
+</div>
+
+<div class="rule-card">
+<i class="fas fa-scale-balanced"></i>
+<h3>Referee Authority</h3>
+<p>
+Referee decisions during matches are final. Any protest must be submitted officially
+through tournament management.
+</p>
+</div>
+
+<div class="rule-card">
+<i class="fas fa-medal"></i>
+<h3>Qualification Rules</h3>
+<p>
+Teams qualify based on points, goal difference and goals scored during the group stage.
+Top teams proceed to knockout rounds.
+</p>
+</div>
+
+</div>
+
+<!-- TIMELINE -->
+
+<h1 class="section-title">
+Tournament Timeline
+</h1>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<div class="timeline-content">
+<h3>Registration Phase</h3>
+<p>All teams complete registration and payment verification.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-content">
+<h3>Group Stage</h3>
+<p>Teams compete in round-robin fixtures.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-content">
+<h3>Quarter Finals</h3>
+<p>Top qualified teams advance to knockout stage.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-content">
+<h3>Semi Finals</h3>
+<p>Winning teams battle for final qualification.</p>
+</div>
+</div>
+
+<div class="timeline-item">
+<div class="timeline-content">
+<h3>Grand Final</h3>
+<p>The final championship match determines the tournament winner.</p>
+</div>
+</div>
+
+</div>
+
+<!-- MEDIA -->
+
+<h1 class="section-title">
+Tournament Media
+</h1>
+
+<div class="media-section">
+
+<div class="media-grid">
+
+<div class="video-box">
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+<div class="video-info">
+<h3>Opening Ceremony</h3>
+<p>Tournament launch and opening highlights.</p>
+</div>
+</div>
+
+<div class="video-box">
+<iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+<div class="video-info">
+<h3>Match Highlights</h3>
+<p>Best moments from recent matches.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- GALLERY -->
+
+<h1 class="section-title">
+Match Day Gallery
+</h1>
+
+<div class="gallery">
+
+<img src="/static/images/slide1.jpg">
+<img src="/static/images/slide2.jpg">
+<img src="/static/images/slide3.jpg">
+<img src="/static/images/slide4.jpg">
+
+</div>
+
+<!-- DOWNLOADS -->
+
+<h1 class="section-title">
+Download Center
+</h1>
+
+<div class="downloads">
+
+<a href="#" class="download-btn">
+<i class="fas fa-file-pdf"></i>
+ Download Tournament Rules
+</a>
+
+<a href="#" class="download-btn">
+<i class="fas fa-download"></i>
+ Download Player Regulations
+</a>
+
+</div>
+
+<!-- CONTACT -->
+
+<h1 class="section-title">
+Tournament Contacts
+</h1>
+
+<div class="contact-grid">
+
+<div class="contact-card">
+<i class="fas fa-phone"></i>
+<h3>Support Team</h3>
+<p>+233 55 115 3989</p>
+</div>
+
+<div class="contact-card">
+<i class="fas fa-envelope"></i>
+<h3>Email Address</h3>
+<p>songhaitournament@gmail.com</p>
+</div>
+
+<div class="contact-card">
+<i class="fas fa-location-dot"></i>
+<h3>Tournament Venue</h3>
+<p>Aflao-Ziorme, Ghana</p>
+</div>
+
+</div>
+
+<!-- SOCIALS -->
+
+<h1 class="section-title">
+Follow Tournament Media
+</h1>
+
+<div class="socials">
+
+<a href="#"><i class="fab fa-tiktok"></i></a>
+
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+
+<a href="#"><i class="fab fa-youtube"></i></a>
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+<a href="#"><i class="fab fa-snapchat"></i></a>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+<h2>
+SONGHAI SALLAH FOOTBALL GALA TOURNAMENT
+</h2>
+
+<p>
+Official Tournament Rules System <br>
+© 2026 All Rights Reserved
+</p>
+
+</div>
+
+</body>
+</html>

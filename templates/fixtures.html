@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SONGHAI SALLAH GALA FIXTURES AND SCORES</title>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#050510;
+color:white;
+overflow-x:hidden;
+}
+
+/* =========================
+BACKGROUND EFFECTS
+========================= */
+
+.bg-glow{
+position:fixed;
+width:700px;
+height:700px;
+background:radial-gradient(circle,#7b2cff33,transparent);
+top:-200px;
+right:-200px;
+z-index:-1;
+}
+
+.bg-glow2{
+position:fixed;
+width:600px;
+height:600px;
+background:radial-gradient(circle,#4B008255,transparent);
+bottom:-250px;
+left:-250px;
+z-index:-1;
+}
+
+/* =========================
+HEADER
+========================= */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 30px;
+background:rgba(10,10,25,.92);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,.08);
+position:sticky;
+top:0;
+z-index:999;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:12px;
+font-size:24px;
+font-weight:900;
+color:white;
+}
+
+.logo img{
+width:55px;
+height:55px;
+border-radius:50%;
+object-fit:cover;
+background:white;
+padding:4px;
+}
+
+.nav{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.nav a{
+text-decoration:none;
+color:white;
+padding:12px 18px;
+border-radius:30px;
+font-weight:bold;
+transition:.3s;
+background:rgba(255,255,255,.04);
+}
+
+.nav a:hover{
+background:#7b2cff;
+transform:translateY(-2px);
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+padding:70px 20px 40px;
+text-align:center;
+}
+
+.hero h1{
+font-size:65px;
+font-weight:900;
+background:linear-gradient(to right,#ffffff,#b785ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:15px;
+}
+
+.hero p{
+font-size:20px;
+color:#d7d7d7;
+max-width:950px;
+margin:auto;
+line-height:1.8;
+}
+
+/* =========================
+CARDS
+========================= */
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+padding:30px;
+max-width:1400px;
+margin:auto;
+}
+
+.stat-card{
+background:linear-gradient(145deg,#111127,#17173a);
+padding:35px;
+border-radius:25px;
+box-shadow:0 8px 30px rgba(0,0,0,.35);
+border:1px solid rgba(255,255,255,.05);
+position:relative;
+overflow:hidden;
+}
+
+.stat-card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:5px;
+height:100%;
+background:#7b2cff;
+}
+
+.stat-card h3{
+font-size:17px;
+color:#ccc;
+margin-bottom:12px;
+}
+
+.stat-card h2{
+font-size:42px;
+font-weight:900;
+color:white;
+}
+
+/* =========================
+SECTIONS
+========================= */
+
+.section{
+width:95%;
+max-width:1450px;
+margin:35px auto;
+background:linear-gradient(145deg,#0f1025,#17183b);
+padding:35px;
+border-radius:30px;
+border:1px solid rgba(255,255,255,.05);
+box-shadow:0 10px 35px rgba(0,0,0,.35);
+}
+
+.section-title{
+font-size:40px;
+font-weight:900;
+margin-bottom:25px;
+background:linear-gradient(to right,#ffffff,#9d63ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* =========================
+TABLES
+========================= */
+
+.group-table{
+overflow-x:auto;
+margin-top:20px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+overflow:hidden;
+border-radius:18px;
+}
+
+th{
+background:#7b2cff;
+padding:16px;
+color:white;
+font-size:15px;
+}
+
+td{
+padding:14px;
+text-align:center;
+border-bottom:1px solid rgba(255,255,255,.06);
+background:rgba(0,0,0,.5);
+}
+
+tr:hover td{
+background:rgba(123,44,255,.45);
+}
+
+/* =========================
+QUALIFIED BOX
+========================= */
+
+.qual-box{
+margin-top:20px;
+padding:18px;
+border-radius:18px;
+background:rgba(123,44,255,.12);
+border:1px solid rgba(123,44,255,.25);
+font-weight:bold;
+font-size:18px;
+}
+
+/* =========================
+BUTTONS
+========================= */
+
+.btn{
+background:linear-gradient(90deg,#5f1fff,#933bff);
+border:none;
+padding:16px 35px;
+border-radius:40px;
+font-weight:bold;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 6px 18px rgba(123,44,255,.35);
+}
+
+.btn:hover{
+transform:translateY(-3px);
+}
+
+/* =========================
+MATCH RESULT
+========================= */
+
+.form-flex{
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+align-items:center;
+justify-content:center;
+margin-top:20px;
+}
+
+select,input{
+padding:14px;
+border:none;
+border-radius:14px;
+background:#1a1b3d;
+color:white;
+font-size:16px;
+min-width:170px;
+outline:none;
+}
+
+/* =========================
+FIXTURE CARDS
+========================= */
+
+.fixtures-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:25px;
+margin-top:30px;
+}
+
+.fixture-card{
+background:linear-gradient(145deg,#141533,#1d1f47);
+padding:28px;
+border-radius:22px;
+text-align:center;
+border-left:5px solid #7b2cff;
+box-shadow:0 8px 22px rgba(0,0,0,.25);
+}
+
+.fixture-team{
+font-size:22px;
+font-weight:bold;
+margin:10px 0;
+}
+
+.fixture-vs{
+font-size:30px;
+font-weight:900;
+color:#9b69ff;
+margin:10px 0;
+}
+
+/* =========================
+BRACKET
+========================= */
+
+.bracket-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+margin-top:25px;
+}
+
+.bracket-card{
+background:linear-gradient(145deg,#141533,#1e2148);
+padding:25px;
+border-radius:22px;
+text-align:center;
+font-weight:bold;
+font-size:20px;
+border-top:5px solid #7b2cff;
+}
+
+/* =========================
+MEDIA
+========================= */
+
+.media-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+margin-top:25px;
+}
+
+.media-box{
+background:#11142d;
+border-radius:20px;
+overflow:hidden;
+}
+
+.media-box img,
+.media-box video{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.media-content{
+padding:18px;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+.footer{
+margin-top:60px;
+padding:30px;
+text-align:center;
+background:#0a0a18;
+color:#bbb;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:38px;
+}
+
+.section-title{
+font-size:28px;
+}
+
+.form-flex{
+flex-direction:column;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg-glow"></div>
+<div class="bg-glow2"></div>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="logo">
+<img src="/static/images/logo.png">
+<span>SONGHAI SALLAH GALA FIXTURES</span>
+</div>
+
+<div class="nav">
+<a href="/">Home</a>
+<a href="/register">Register</a>
+<a href="/teams">Teams</a>
+<a href="/fixtures">Fixtures</a>
+<a href="/gallery">Gallery</a>
+<a href="/news">News</a>
+<a href="/rules">Rules</a>
+</div>
+
+</div>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<h1>SONGHAI SALLAH GALA FIXTURES AND SCORES</h1>
+
+<p>
+Advanced automatic football tournament management system with live standings,
+fixture generation, knockout stages, statistics, goals tracking,
+media highlights and tournament analytics.
+</p>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<h3>Total Teams</h3>
+<h2 id="totalTeams">{{teams|length}}</h2>
+</div>
+
+<div class="stat-card">
+<h3>Total Matches</h3>
+<h2 id="totalMatches">0</h2>
+</div>
+
+<div class="stat-card">
+<h3>Total Goals</h3>
+<h2 id="totalGoals">0</h2>
+</div>
+
+<div class="stat-card">
+<h3>Qualified Teams</h3>
+<h2 id="qualifiedCount">8</h2>
+</div>
+
+</div>
+
+<!-- GROUP STAGES -->
+
+{% for grp,start in [('A',1),('B',5),('C',9),('D',13)] %}
+
+<div class="section">
+
+<h2 class="section-title">Group {{grp}} Standings</h2>
+
+<div class="group-table">
+
+<table>
+
+<tr>
+<th>Team</th>
+<th>P</th>
+<th>W</th>
+<th>D</th>
+<th>L</th>
+<th>GF</th>
+<th>GA</th>
+<th>PTS</th>
+</tr>
+
+{% for n in range(start,start+4) %}
+
+<tr>
+
+<td>
+
+<div style="
+display:flex;
+align-items:center;
+gap:12px;
+font-weight:bold;
+justify-content:flex-start;
+">
+
+{% if teams|length >= n and teams[n-1]["logo"] %}
+
+<img 
+src="/uploads/{{teams[n-1]['logo']}}" 
+style="
+width:38px;
+height:38px;
+border-radius:50%;
+object-fit:cover;
+border:2px solid #7b2cff;
+background:white;
+padding:2px;
+box-shadow:0 4px 10px rgba(0,0,0,.25);
+"
+>
+
+{% else %}
+
+<img 
+src="/static/images/logo.png"
+style="
+width:38px;
+height:38px;
+border-radius:50%;
+object-fit:cover;
+border:2px solid #7b2cff;
+background:white;
+padding:2px;
+box-shadow:0 4px 10px rgba(0,0,0,.25);
+"
+>
+
+{% endif %}
+
+<span>
+{{teams[n-1]["team_name"] if teams|length >= n else "Empty Slot"}}
+</span>
+
+</div>
+
+</td>
+<td id="t{{n}}_p">0</td>
+<td id="t{{n}}_w">0</td>
+<td id="t{{n}}_d">0</td>
+<td id="t{{n}}_l">0</td>
+<td id="t{{n}}_gf">0</td>
+<td id="t{{n}}_ga">0</td>
+<td id="t{{n}}_pts">0</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+<div id="group{{grp}}qual" class="qual-box">
+Qualified teams appear here
+</div>
+
+</div>
+
+{% endfor %}
+
+<!-- GENERATE FIXTURES -->
+
+<div class="section">
+
+<h2 class="section-title">Automatic Match Generator</h2>
+
+<button class="btn" onclick="generateFixtures()">
+⚽ Generate Fixtures
+</button>
+
+<div class="fixtures-grid" id="generated-fixtures"></div>
+
+</div>
+
+<!-- MATCH RESULTS -->
+
+<div class="section">
+
+<h2 class="section-title">Enter Match Result</h2>
+
+<div class="form-flex">
+
+<select id="teamA">
+
+{% for t in teams %}
+<option>{{t["team_name"]}}</option>
+{% endfor %}
+
+</select>
+
+<input type="number" id="scoreA" placeholder="Goals">
+
+<div style="font-size:28px;font-weight:bold;">VS</div>
+
+<input type="number" id="scoreB" placeholder="Goals">
+
+<select id="teamB">
+
+{% for t in teams %}
+<option>{{t["team_name"]}}</option>
+{% endfor %}
+
+</select>
+
+<button class="btn" onclick="addResult()">
+Update Result
+</button>
+
+</div>
+
+</div>
+
+<!-- KNOCKOUT -->
+
+<div class="section">
+
+<h2 class="section-title">Quarterfinals</h2>
+
+<div class="bracket-grid">
+
+<div class="bracket-card" id="qf1">
+Winner A vs Runner-up B
+</div>
+
+<div class="bracket-card" id="qf2">
+Winner B vs Runner-up A
+</div>
+
+<div class="bracket-card" id="qf3">
+Winner C vs Runner-up D
+</div>
+
+<div class="bracket-card" id="qf4">
+Winner D vs Runner-up C
+</div>
+
+</div>
+
+</div>
+
+<!-- MEDIA -->
+
+<div class="section">
+
+<h2 class="section-title">Match Highlights</h2>
+
+<div class="media-grid">
+
+<div class="media-box">
+<img src="/static/images/slide1.jpg">
+<div class="media-content">
+<h3>Opening Ceremony</h3>
+<p>Official opening celebration of the tournament.</p>
+</div>
+</div>
+
+<div class="media-box">
+<img src="/static/images/slide2.jpg">
+<div class="media-content">
+<h3>Top Match Highlights</h3>
+<p>Best goals and tournament action moments.</p>
+</div>
+</div>
+
+<div class="media-box">
+<img src="/static/images/slide3.jpg">
+<div class="media-content">
+<h3>Fans Celebration</h3>
+<p>Supporters and cultural football celebration moments.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+© 2026 Songhai Sallah Football Gala Tournament - Fixtures
+</div>
+
+<script>
+
+let totalMatches = 0;
+let totalGoals = 0;
+
+let teamsData = {};
+
+{% for i in range(16) %}
+
+teamsData["{{i+1}}"] = {
+
+name:"{{teams[i]['team_name'] if teams|length >= i+1 else 'Empty Slot'}}",
+
+p:0,
+w:0,
+d:0,
+l:0,
+gf:0,
+ga:0,
+pts:0
+
+};
+
+{% endfor %}
+
+/* =========================
+RENDER TABLE
+========================= */
+
+function renderTable(){
+
+for(let id in teamsData){
+
+let t = teamsData[id];
+
+if(document.getElementById('t'+id+'_p')){
+
+document.getElementById('t'+id+'_p').innerHTML = t.p;
+document.getElementById('t'+id+'_w').innerHTML = t.w;
+document.getElementById('t'+id+'_d').innerHTML = t.d;
+document.getElementById('t'+id+'_l').innerHTML = t.l;
+document.getElementById('t'+id+'_gf').innerHTML = t.gf;
+document.getElementById('t'+id+'_ga').innerHTML = t.ga;
+document.getElementById('t'+id+'_pts').innerHTML = t.pts;
+
+}
+
+}
+
+autoQualifiers();
+
+}
+
+/* =========================
+ADD RESULT
+========================= */
+
+function addResult(){
+
+let A = document.getElementById("teamA").value;
+let B = document.getElementById("teamB").value;
+
+if(A == B){
+
+alert("Same team not allowed");
+return;
+
+}
+
+let map = {
+
+{% for i in range(16) %}
+
+"{{teams[i]['team_name'] if teams|length >= i+1 else 'Empty Slot'}}":"{{i+1}}",
+
+{% endfor %}
+
+};
+
+let a = map[A];
+let b = map[B];
+
+let sA = parseInt(document.getElementById("scoreA").value) || 0;
+let sB = parseInt(document.getElementById("scoreB").value) || 0;
+
+teamsData[a].p++;
+teamsData[b].p++;
+
+teamsData[a].gf += sA;
+teamsData[a].ga += sB;
+
+teamsData[b].gf += sB;
+teamsData[b].ga += sA;
+
+if(sA > sB){
+
+teamsData[a].w++;
+teamsData[b].l++;
+teamsData[a].pts += 3;
+
+}
+else if(sB > sA){
+
+teamsData[b].w++;
+teamsData[a].l++;
+teamsData[b].pts += 3;
+
+}
+else{
+
+teamsData[a].d++;
+teamsData[b].d++;
+
+teamsData[a].pts++;
+teamsData[b].pts++;
+
+}
+
+totalMatches++;
+totalGoals += (sA + sB);
+
+document.getElementById("totalMatches").innerHTML = totalMatches;
+document.getElementById("totalGoals").innerHTML = totalGoals;
+
+renderTable();
+
+}
+
+/* =========================
+SORT GROUP
+========================= */
+
+function sortGroup(ids){
+
+return ids.sort(function(a,b){
+
+let gdA = teamsData[a].gf - teamsData[a].ga;
+let gdB = teamsData[b].gf - teamsData[b].ga;
+
+if(teamsData[b].pts != teamsData[a].pts)
+return teamsData[b].pts - teamsData[a].pts;
+
+if(gdB != gdA)
+return gdB - gdA;
+
+return teamsData[b].gf - teamsData[a].gf;
+
+});
+
+}
+
+/* =========================
+QUALIFIERS
+========================= */
+
+function autoQualifiers(){
+
+let A = sortGroup(['1','2','3','4']);
+let B = sortGroup(['5','6','7','8']);
+let C = sortGroup(['9','10','11','12']);
+let D = sortGroup(['13','14','15','16']);
+
+document.getElementById("qf1").innerHTML =
+teamsData[A[0]].name + "<br><br>VS<br><br>" + teamsData[B[1]].name;
+
+document.getElementById("qf2").innerHTML =
+teamsData[B[0]].name + "<br><br>VS<br><br>" + teamsData[A[1]].name;
+
+document.getElementById("qf3").innerHTML =
+teamsData[C[0]].name + "<br><br>VS<br><br>" + teamsData[D[1]].name;
+
+document.getElementById("qf4").innerHTML =
+teamsData[D[0]].name + "<br><br>VS<br><br>" + teamsData[C[1]].name;
+
+document.getElementById("groupAqual").innerHTML =
+"Qualified: " + teamsData[A[0]].name + " / " + teamsData[A[1]].name;
+
+document.getElementById("groupBqual").innerHTML =
+"Qualified: " + teamsData[B[0]].name + " / " + teamsData[B[1]].name;
+
+document.getElementById("groupCqual").innerHTML =
+"Qualified: " + teamsData[C[0]].name + " / " + teamsData[C[1]].name;
+
+document.getElementById("groupDqual").innerHTML =
+"Qualified: " + teamsData[D[0]].name + " / " + teamsData[D[1]].name;
+
+}
+
+/* =========================
+GENERATE FIXTURES
+========================= */
+
+function generateFixtures(){
+
+let groups = [
+
+[
+'{{groups.A[0]["team_name"] if groups.A|length>0 else "Empty Slot"}}',
+'{{groups.A[1]["team_name"] if groups.A|length>1 else "Empty Slot"}}',
+'{{groups.A[2]["team_name"] if groups.A|length>2 else "Empty Slot"}}',
+'{{groups.A[3]["team_name"] if groups.A|length>3 else "Empty Slot"}}'
+],
+
+[
+'{{groups.B[0]["team_name"] if groups.B|length>0 else "Empty Slot"}}',
+'{{groups.B[1]["team_name"] if groups.B|length>1 else "Empty Slot"}}',
+'{{groups.B[2]["team_name"] if groups.B|length>2 else "Empty Slot"}}',
+'{{groups.B[3]["team_name"] if groups.B|length>3 else "Empty Slot"}}'
+],
+
+[
+'{{groups.C[0]["team_name"] if groups.C|length>0 else "Empty Slot"}}',
+'{{groups.C[1]["team_name"] if groups.C|length>1 else "Empty Slot"}}',
+'{{groups.C[2]["team_name"] if groups.C|length>2 else "Empty Slot"}}',
+'{{groups.C[3]["team_name"] if groups.C|length>3 else "Empty Slot"}}'
+],
+
+[
+'{{groups.D[0]["team_name"] if groups.D|length>0 else "Empty Slot"}}',
+'{{groups.D[1]["team_name"] if groups.D|length>1 else "Empty Slot"}}',
+'{{groups.D[2]["team_name"] if groups.D|length>2 else "Empty Slot"}}',
+'{{groups.D[3]["team_name"] if groups.D|length>3 else "Empty Slot"}}'
+]
+
+];
+
+let output = '';
+
+groups.forEach(function(group,index){
+
+output += `
+<h2 style="
+width:100%;
+margin-top:40px;
+margin-bottom:10px;
+font-size:32px;
+font-weight:900;
+color:#b785ff;
+">
+Group ${String.fromCharCode(65+index)} Fixtures
+</h2>
+`;
+
+for(let i=0;i<group.length;i++){
+
+for(let j=i+1;j<group.length;j++){
+
+if(group[i]!="Empty Slot" && group[j]!="Empty Slot"){
+
+output += `
+
+<div class="fixture-card">
+
+<div class="fixture-team">
+⚽ ${group[i]}
+</div>
+
+<div class="fixture-vs">
+VS
+</div>
+
+<div class="fixture-team">
+⚽ ${group[j]}
+</div>
+
+</div>
+
+`;
+
+}
+
+}
+
+}
+
+});
+
+document.getElementById("generated-fixtures").innerHTML = output;
+
+}
+
+renderTable();
+
+</script>
+
+</body>
+</html>

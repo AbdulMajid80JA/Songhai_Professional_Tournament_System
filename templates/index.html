@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Songhai Football Gala Tournament</title>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<style>
+
+/* =========================================
+GLOBAL
+========================================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#0b0614;
+color:white;
+overflow-x:hidden;
+}
+
+/* =========================================
+BACKGROUND EFFECTS
+========================================= */
+
+body::before{
+content:'';
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top left,#4B0082 0%,transparent 30%),
+radial-gradient(circle at bottom right,#1a0033 0%,transparent 35%);
+opacity:.35;
+z-index:-2;
+}
+
+/* =========================================
+HEADER
+========================================= */
+
+.header{
+position:sticky;
+top:0;
+z-index:999;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 30px;
+background:rgba(10,10,10,.75);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,.08);
+flex-wrap:wrap;
+}
+
+/* LOGO */
+
+.logo{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.logo img{
+height:58px;
+width:58px;
+border-radius:14px;
+object-fit:cover;
+background:white;
+padding:4px;
+box-shadow:0 0 18px rgba(255,255,255,.25);
+}
+
+.logo span{
+font-size:24px;
+font-weight:900;
+letter-spacing:1px;
+}
+
+/* NAV */
+
+.nav{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+justify-content:flex-end;
+}
+
+.nav a{
+text-decoration:none;
+color:white;
+padding:12px 18px;
+border-radius:30px;
+font-size:15px;
+font-weight:900;
+transition:.35s;
+background:rgba(255,255,255,.04);
+border:1px solid rgba(255,255,255,.06);
+}
+
+.nav a:hover{
+background:#4B0082;
+transform:translateY(-3px);
+box-shadow:0 8px 20px rgba(75,0,130,.45);
+}
+
+/* =========================================
+SLIDER
+========================================= */
+
+.slider{
+position:relative;
+width:100%;
+height:92vh;
+overflow:hidden;
+}
+
+.slides{
+position:relative;
+width:100%;
+height:100%;
+}
+
+.slide{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+opacity:0;
+transition:opacity 1.2s ease-in-out;
+}
+
+.slide.active{
+opacity:1;
+z-index:2;
+}
+
+.slide img,
+.slide video{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* DARK OVERLAY */
+
+.slide::after{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+linear-gradient(
+to bottom,
+rgba(0,0,0,.45),
+rgba(0,0,0,.65)
+);
+}
+
+/* CAPTION */
+
+.caption{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+z-index:5;
+width:90%;
+max-width:1000px;
+text-align:center;
+padding:40px;
+border-radius:30px;
+background:rgba(0,0,0,.38);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.1);
+box-shadow:0 10px 40px rgba(0,0,0,.45);
+animation:fadeUp 1.3s ease;
+}
+
+.caption h2{
+font-size:64px;
+font-weight:900;
+margin-bottom:20px;
+line-height:1.1;
+text-shadow:0 5px 20px rgba(0,0,0,.5);
+}
+
+.caption p{
+font-size:22px;
+line-height:1.7;
+color:#eee;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translate(-50%,20%);
+}
+to{
+opacity:1;
+transform:translate(-50%,-50%);
+}
+}
+
+/* =========================================
+HERO
+========================================= */
+
+.hero{
+padding:90px 20px 70px;
+text-align:center;
+max-width:1200px;
+margin:auto;
+}
+
+.hero h1{
+font-size:68px;
+font-weight:900;
+line-height:1.15;
+margin-bottom:25px;
+background:linear-gradient(90deg,#ffffff,#c79fff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+font-size:22px;
+line-height:1.8;
+color:#d5d5d5;
+max-width:900px;
+margin:auto;
+}
+
+/* CTA */
+
+.cta{
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.cta a{
+padding:18px 38px;
+border-radius:40px;
+text-decoration:none;
+font-weight:900;
+font-size:17px;
+transition:.35s;
+}
+
+.primary{
+background:linear-gradient(90deg,#4B0082,#6f00ff);
+color:white;
+box-shadow:0 10px 25px rgba(75,0,130,.45);
+}
+
+.secondary{
+background:#111;
+color:white;
+border:1px solid rgba(255,255,255,.1);
+}
+
+.cta a:hover{
+transform:translateY(-5px) scale(1.03);
+}
+
+/* =========================================
+LIVE STATS
+========================================= */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+max-width:1250px;
+margin:40px auto 80px;
+padding:0 20px;
+}
+
+.stat-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+padding:35px;
+border-radius:28px;
+text-align:center;
+transition:.35s;
+}
+
+.stat-card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 40px rgba(75,0,130,.3);
+}
+
+.stat-number{
+font-size:60px;
+font-weight:900;
+margin-bottom:12px;
+color:#c79fff;
+}
+
+.stat-title{
+font-size:18px;
+color:#ddd;
+}
+
+/* =========================================
+SECTIONS
+========================================= */
+
+.section{
+padding:90px 20px;
+max-width:1300px;
+margin:auto;
+text-align:center;
+}
+
+.section h2{
+font-size:52px;
+margin-bottom:25px;
+font-weight:900;
+}
+
+.section p{
+font-size:20px;
+line-height:1.9;
+color:#ddd;
+max-width:1000px;
+margin:auto;
+}
+
+/* =========================================
+GRID
+========================================= */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:28px;
+margin-top:50px;
+}
+
+/* =========================================
+CARDS
+========================================= */
+
+.card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:28px;
+overflow:hidden;
+transition:.35s;
+backdrop-filter:blur(10px);
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 45px rgba(75,0,130,.35);
+}
+
+.card img{
+width:100%;
+height:240px;
+object-fit:cover;
+}
+
+.card-content{
+padding:28px;
+}
+
+.card h3{
+font-size:28px;
+margin-bottom:15px;
+}
+
+.card p{
+font-size:17px;
+line-height:1.8;
+color:#ddd;
+}
+
+/* BUTTON */
+
+.card a{
+display:inline-block;
+margin-top:18px;
+padding:12px 24px;
+background:#4B0082;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+transition:.3s;
+}
+
+.card a:hover{
+background:#6f00ff;
+}
+
+/* =========================================
+SOCIALS
+========================================= */
+
+.socials{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.socials a{
+padding:15px 28px;
+border-radius:35px;
+background:rgba(255,255,255,.06);
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.35s;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.socials a:hover{
+background:#4B0082;
+transform:translateY(-4px);
+}
+
+/* =========================================
+CONTACT
+========================================= */
+
+.contact{
+margin-top:70px;
+background:linear-gradient(135deg,#120022,#1f003d);
+padding:80px 20px;
+text-align:center;
+}
+
+.contact h2{
+font-size:48px;
+margin-bottom:20px;
+}
+
+.contact p{
+font-size:21px;
+line-height:2;
+color:#eee;
+}
+
+/* =========================================
+FOOTER
+========================================= */
+
+.footer{
+background:#050505;
+padding:50px 20px;
+text-align:center;
+border-top:1px solid rgba(255,255,255,.08);
+}
+
+.footer p{
+font-size:16px;
+color:#ccc;
+margin-bottom:20px;
+}
+
+.footer-links{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.footer-links a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+}
+
+.footer-links a:hover{
+color:#c79fff;
+}
+
+/* =========================================
+MOBILE
+========================================= */
+
+@media(max-width:768px){
+
+.caption{
+padding:25px;
+}
+
+.caption h2{
+font-size:34px;
+}
+
+.caption p{
+font-size:16px;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+.section h2{
+font-size:34px;
+}
+
+.slider{
+height:78vh;
+}
+
+.nav{
+justify-content:center;
+margin-top:15px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================================
+HEADER
+========================================= -->
+
+<div class="header">
+
+<div class="logo">
+<img src="{{ url_for('static', filename='images/logo.png') }}">
+<span>SONGHAI SALLAH GALA BOARD</span>
+</div>
+
+<div class="nav">
+
+<a href="/">Home</a>
+<a href="/register">Register</a>
+<a href="/teams">Teams</a>
+<a href="/fixtures">Fixtures</a>
+<a href="/gallery">Gallery</a>
+<a href="/news">News</a>
+<a href="/rules">Rules</a>
+<a href="/payment">Payment</a>
+<a href="/location">Location</a>
+<a href="/player_id">Generate ID</a>
+<a href="/admin">Admin Log</a>
+
+</div>
+
+</div>
+
+<!-- =========================================
+SLIDER
+========================================= -->
+
+<div class="slider">
+
+<div class="slides">
+
+<div class="slide active">
+<img src="{{ url_for('static', filename='images/slide1.jpg') }}">
+<div class="caption">
+<h2>WELCOME TO SONGHAI SALLAH GALA TOURNAMENT</h2>
+<p>
+Experience the ultimate football gala uniting communities,
+talents and culture through world-class competition.
+</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="{{ url_for('static', filename='images/slide2.jpg') }}">
+<div class="caption">
+<h2>REGISTER YOUR TEAM NOW</h2>
+<p>
+Secure your team's place in the biggest community football gala.
+</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="{{ url_for('static', filename='images/slide3.jpg') }}">
+<div class="caption">
+<h2>COMPETE FOR GLORY</h2>
+<p>
+Fight for the championship trophy and become tournament legends.
+</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="{{ url_for('static', filename='images/slide4.jpg') }}">
+<div class="caption">
+<h2>FOOTBALL • CULTURE • UNITY</h2>
+<p>
+Celebrating sportsmanship, community and the spirit of togetherness.
+</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="{{ url_for('static', filename='images/slide5.jpg') }}">
+<div class="caption">
+<h2>WIN AMAZING PRIZES</h2>
+<p>
+Exclusive rewards, medals and championship recognition await winners.
+</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="{{ url_for('static', filename='images/slide6.jpg') }}">
+<div class="caption">
+<h2>LIVE THE PASSION</h2>
+<p>
+Witness unforgettable football moments and thrilling matches.
+</p>
+</div>
+</div>
+
+<div class="slide">
+<img src="{{ url_for('static', filename='images/slide7.jpg') }}">
+<div class="caption">
+<h2>JOIN THE BIGGEST GALA</h2>
+<p>
+A premium tournament experience powered by the Songhai community.
+</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================================
+HERO
+========================================= -->
+
+<div class="hero">
+
+<h1>
+SONGHAI SALLAH FOOTBALL GALA TOURNAMENT
+</h1>
+
+<p>
+A modern football tournament platform designed to promote unity,
+youth empowerment, sportsmanship and cultural excellence through
+competitive football and community celebration.
+</p>
+
+<div class="cta">
+
+<a href="/register" class="primary">
+Register Team
+</a>
+
+<a href="/fixtures" class="secondary">
+View Fixtures
+</a>
+
+<a href="/payment" class="primary">
+Make Payment
+</a>
+
+</div>
+
+</div>
+
+<!-- =========================================
+LIVE STATS
+========================================= -->
+
+<div class="stats">
+
+<div class="stat-card">
+<div class="stat-number">16</div>
+<div class="stat-title">Registered Teams</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-number">32</div>
+<div class="stat-title">Tournament Matches</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-number">12K+</div>
+<div class="stat-title">Fans & Supporters</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-number">₵10K</div>
+<div class="stat-title">Prize Pool</div>
+</div>
+
+</div>
+
+<!-- =========================================
+ABOUT
+========================================= -->
+
+<div class="section">
+
+<h2>About The Tournament</h2>
+
+<p>
+The Songhai Sallah Football Gala Tournament is a community-driven
+competition that brings together talented football teams, passionate
+fans and youth across different communities. The tournament promotes
+discipline, unity, sportsmanship and opportunity while creating an
+environment for players to showcase their abilities and cultural pride.
+</p>
+
+</div>
+
+<!-- =========================================
+FOUNDERS
+========================================= -->
+
+<div class="section">
+
+<h2>Founders & Organizers</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="/static/images/founder1.jpg">
+<div class="card-content">
+<h3>Founder</h3>
+<p>
+Visionary behind the Songhai Football Gala Tournament.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="/static/images/founder2.jpg">
+<div class="card-content">
+<h3>Co-Founder</h3>
+<p>
+Tournament coordinator and development strategist.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="/static/images/committee1.jpg">
+<div class="card-content">
+<h3>Organizing Committee</h3>
+<p>
+Managing tournament logistics, planning and operations.
+</p>
+</div>
+</div>
+
+<div class="card">
+<img src="/static/images/partner1.jpg">
+<div class="card-content">
+<h3>Sponsors & Partners</h3>
+<p>
+Supporting community football and youth empowerment.
+</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================================
+EXPLORE
+========================================= -->
+
+<div class="section">
+
+<h2>Explore Tournament Features</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="card-content">
+<h3>Fixtures</h3>
+<p>AI tournament fixtures engine and live standings.</p>
+<a href="/fixtures">Open</a>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>Gallery</h3>
+<p>Match photos, videos and tournament highlights.</p>
+<a href="/gallery">Open</a>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>News</h3>
+<p>Latest announcements, donations and event updates.</p>
+<a href="/news">Open</a>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>Player ID</h3>
+<p>Create online player identity cards instantly.</p>
+<a href="/player_id">Open</a>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>Payment</h3>
+<p>Secure team registration payment system.</p>
+<a href="/payment">Open</a>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>Location</h3>
+<p>Find the tournament venue and stadium location.</p>
+<a href="/location">Open</a>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================================
+SOCIALS
+========================================= -->
+
+<div class="section">
+
+<h2>Follow Us</h2>
+
+<div class="socials">
+
+<a href="#">TikTok</a>
+<a href="#">YouTube</a>
+<a href="#">Facebook</a>
+<a href="#">Instagram</a>
+<a href="#">Snapchat</a>
+
+</div>
+
+</div>
+
+<!-- =========================================
+CONTACT
+========================================= -->
+
+<div class="contact">
+
+<h2>Contact Us</h2>
+
+<p>
+
+📞 +233 55 115 3989 / +233 55 298 8020 / +233 55 606 0637 <br>
+📧 songhaigala@gmail.com <br>
+📍 Aflao, Ghana — Ziorme Park
+
+</p>
+
+</div>
+
+<!-- =========================================
+FOOTER
+========================================= -->
+
+<div class="footer">
+
+<p>
+© 2026 Songhai Sallah Football Gala Tournament
+</p>
+
+<div class="footer-links">
+
+<a href="/">Home</a>
+<a href="/register">Register</a>
+<a href="/fixtures">Fixtures</a>
+<a href="/gallery">Gallery</a>
+<a href="/payment">Payment</a>
+<a href="/rules">Rules</a>
+<a href="/location">Location</a>
+
+</div>
+
+</div>
+
+<!-- =========================================
+SLIDER LOGIC
+========================================= -->
+
+<script>
+
+let slides=document.querySelectorAll(".slide");
+
+let index=0;
+
+function showSlide(){
+
+slides.forEach(slide=>{
+slide.classList.remove("active");
+});
+
+slides[index].classList.add("active");
+
+index=(index+1)%slides.length;
+
+}
+
+showSlide();
+
+setInterval(showSlide,5000);
+
+</script>
+
+</body>
+</html>
