@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SONGHAI ULTRA PRO MAX ADMIN PANEL</title>
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:
+linear-gradient(rgba(8,8,20,.92),rgba(8,8,20,.95)),
+url('/static/images/slide1.jpg');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+color:white;
+overflow-x:hidden;
+}
+
+/* =========================
+TOP NAVIGATION
+========================= */
+
+.topbar{
+width:100%;
+padding:18px 35px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,.08);
+position:sticky;
+top:0;
+z-index:1000;
+}
+
+.logo-area{
+display:flex;
+align-items:center;
+gap:15px;
+}
+
+.logo-area img{
+width:60px;
+height:60px;
+border-radius:50%;
+object-fit:cover;
+background:white;
+padding:4px;
+box-shadow:0 0 15px rgba(255,255,255,.25);
+}
+
+.logo-text h1{
+font-size:24px;
+font-weight:900;
+line-height:1.2;
+}
+
+.logo-text span{
+font-size:13px;
+color:#c9b3ff;
+}
+
+.nav-links{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+padding:12px 18px;
+border-radius:30px;
+background:rgba(255,255,255,.05);
+font-size:14px;
+font-weight:600;
+transition:.3s;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.nav-links a:hover{
+background:#6d28d9;
+transform:translateY(-3px);
+box-shadow:0 6px 18px rgba(109,40,217,.4);
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+padding:70px 20px 40px;
+text-align:center;
+}
+
+.hero h1{
+font-size:65px;
+font-weight:900;
+background:linear-gradient(to right,#ffffff,#c084fc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:15px;
+}
+
+.hero p{
+max-width:900px;
+margin:auto;
+font-size:20px;
+line-height:1.8;
+color:#ddd;
+}
+
+/* =========================
+LIVE CARDS
+========================= */
+
+.live-cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+padding:20px 40px;
+max-width:1500px;
+margin:auto;
+}
+
+.live-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:28px;
+padding:35px 25px;
+backdrop-filter:blur(10px);
+position:relative;
+overflow:hidden;
+transition:.4s;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+.live-card:hover{
+transform:translateY(-8px);
+box-shadow:0 18px 35px rgba(0,0,0,.4);
+}
+
+.live-card::before{
+content:'';
+position:absolute;
+top:-60px;
+right:-60px;
+width:140px;
+height:140px;
+background:rgba(255,255,255,.05);
+border-radius:50%;
+}
+
+.icon{
+font-size:55px;
+margin-bottom:15px;
+}
+
+.live-card h2{
+font-size:22px;
+margin-bottom:15px;
+font-weight:700;
+}
+
+.stat{
+font-size:58px;
+font-weight:900;
+color:#c084fc;
+margin-bottom:10px;
+}
+
+.desc{
+font-size:15px;
+line-height:1.7;
+color:#ccc;
+margin-bottom:20px;
+}
+
+.btn{
+display:inline-block;
+padding:13px 22px;
+border-radius:35px;
+text-decoration:none;
+font-weight:700;
+font-size:14px;
+transition:.3s;
+background:linear-gradient(90deg,#6d28d9,#111827);
+color:white;
+box-shadow:0 5px 18px rgba(109,40,217,.35);
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+.logout-btn{
+background:linear-gradient(90deg,#dc2626,#111);
+}
+
+/* =========================
+ADMIN FEATURES
+========================= */
+
+.section-title{
+text-align:center;
+font-size:48px;
+margin-top:70px;
+margin-bottom:20px;
+font-weight:900;
+background:linear-gradient(to right,#fff,#c084fc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.section-sub{
+text-align:center;
+max-width:850px;
+margin:auto;
+font-size:18px;
+line-height:1.8;
+color:#ccc;
+margin-bottom:50px;
+}
+
+.features-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+padding:0 40px 70px;
+max-width:1500px;
+margin:auto;
+}
+
+.feature-box{
+background:rgba(255,255,255,.05);
+padding:30px;
+border-radius:30px;
+border:1px solid rgba(255,255,255,.08);
+backdrop-filter:blur(10px);
+transition:.3s;
+position:relative;
+overflow:hidden;
+}
+
+.feature-box:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 35px rgba(0,0,0,.35);
+}
+
+.feature-box h3{
+font-size:26px;
+margin-bottom:18px;
+font-weight:800;
+}
+
+.feature-box p{
+font-size:15px;
+line-height:1.9;
+color:#ddd;
+margin-bottom:25px;
+}
+
+.feature-icon{
+font-size:65px;
+margin-bottom:18px;
+}
+
+/* =========================
+STATUS SECTION
+========================= */
+
+.status-section{
+width:92%;
+max-width:1450px;
+margin:20px auto 70px;
+background:rgba(255,255,255,.05);
+border-radius:30px;
+padding:40px;
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.08);
+}
+
+.status-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:30px;
+}
+
+.status-box{
+background:rgba(255,255,255,.04);
+padding:25px;
+border-radius:22px;
+text-align:center;
+}
+
+.status-pill{
+display:inline-block;
+padding:12px 22px;
+border-radius:30px;
+background:#6d28d9;
+font-weight:700;
+margin-top:15px;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+.footer{
+padding:35px;
+text-align:center;
+background:#09090f;
+font-size:15px;
+color:#aaa;
+border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.section-title{
+font-size:34px;
+}
+
+.topbar{
+padding:15px;
+flex-direction:column;
+gap:15px;
+}
+
+.nav-links{
+justify-content:center;
+}
+
+.live-cards,
+.features-grid{
+padding:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+TOPBAR
+========================= -->
+
+<div class="topbar">
+
+<div class="logo-area">
+
+<img src="/static/images/logo.png">
+
+<div class="logo-text">
+<h1>SONGHAI GALA</h1>
+<span>Ultra Pro Max Tournament System</span>
+</div>
+
+</div>
+
+<div class="nav-links">
+
+<a href="/">Home</a>
+<a href="/register">Register</a>
+<a href="/teams">Teams</a>
+<a href="/fixtures">Fixtures</a>
+<a href="/gallery">Gallery</a>
+<a href="/news">News</a>
+<a href="/rules">Rules</a>
+<a href="/payment">Payment</a>
+<a href="/location">Location</a>
+
+</div>
+
+</div>
+
+<!-- =========================
+HERO
+========================= -->
+
+<div class="hero">
+
+<h1>ADMIN CONTROL CENTER</h1>
+
+<p>
+Manage your entire Songhai Sallah Football Gala Tournament from one powerful dashboard.
+Monitor registrations, fixtures, standings, match results, knockout stages,
+media updates, approvals, tournament statistics and AI fixture operations.
+</p>
+
+</div>
+
+<!-- =========================
+LIVE CARDS
+========================= -->
+
+<div class="live-cards">
+
+<div class="live-card">
+
+<div class="icon">⚽</div>
+
+<h2>Registered Teams</h2>
+
+<div class="stat">{{total}}</div>
+
+<div class="desc">
+View all tournament registered clubs with logos, managers,
+captains, player rosters and approvals.
+</div>
+
+<a href="/teams" class="btn">
+Manage Teams
+</a>
+
+</div>
+
+<div class="live-card">
+
+<div class="icon">📄</div>
+
+<h2>Export Registrations</h2>
+
+<div class="stat">PDF</div>
+
+<div class="desc">
+Download complete registration records with payment proofs,
+team information and tournament details.
+</div>
+
+<a href="/export_pdf" class="btn">
+Download PDF
+</a>
+
+</div>
+
+<div class="live-card">
+
+<div class="icon">✅</div>
+
+<h2>Approve Teams</h2>
+
+<div class="stat">LIVE</div>
+
+<div class="desc">
+Approve or reject teams instantly after reviewing payment proofs
+and registration information.
+</div>
+
+<a href="/teams" class="btn">
+Review Teams
+</a>
+
+</div>
+
+<div class="live-card">
+
+<div class="icon">🏆</div>
+
+<h2>Tournament Fixtures</h2>
+
+<div class="stat">AI</div>
+
+<div class="desc">
+Control standings, generate fixtures, enter match scores
+and manage knockout brackets.
+</div>
+
+<a href="/fixtures" class="btn">
+Open Fixtures
+</a>
+
+</div>
+
+<div class="live-card">
+
+<div class="icon">📊</div>
+
+<h2>Live Standings</h2>
+
+<div class="stat">24/7</div>
+
+<div class="desc">
+Track group standings, points, goals scored,
+goal difference and qualification tables.
+</div>
+
+<a href="/fixtures" class="btn">
+Update Tables
+</a>
+
+</div>
+
+<div class="live-card">
+
+<div class="icon">🎥</div>
+
+<h2>Media Center</h2>
+
+<div class="stat">HD</div>
+
+<div class="desc">
+Manage tournament gallery, videos,
+news updates and sponsorship highlights.
+</div>
+
+<a href="/gallery" class="btn">
+Open Gallery
+</a>
+
+</div>
+
+<div class="live-card">
+
+<div class="icon">💰</div>
+
+<h2>Payment Status</h2>
+
+<div class="stat">SAFE</div>
+
+<div class="desc">
+Track payment verification, proof uploads
+and tournament registration fees.
+</div>
+
+<div class="status-pill">
+Pending / Verified
+</div>
+
+</div>
+
+<div class="live-card">
+
+<div class="icon">🔒</div>
+
+<h2>Logout Admin</h2>
+
+<div class="stat">EXIT</div>
+
+<div class="desc">
+Securely logout from the Ultra Pro Max
+Tournament Administration System.
+</div>
+
+<a href="/logout" class="btn logout-btn">
+Logout
+</a>
+
+</div>
+
+</div>
+
+<!-- =========================
+FEATURES
+========================= -->
+
+<h2 class="section-title">
+SYSTEM FEATURES
+</h2>
+
+<div class="section-sub">
+
+The Songhai Ultra Pro Max Tournament Engine combines AI fixture generation,
+team management, live standings, media publishing, player ID systems,
+registration approvals and tournament automation in one platform.
+
+</div>
+
+<div class="features-grid">
+
+<div class="feature-box">
+
+<div class="feature-icon">🧠</div>
+
+<h3>AI Fixture Engine</h3>
+
+<p>
+Automatically generates group stage fixtures,
+quarter finals, semi finals and finals with
+live qualification updates and standings.
+</p>
+
+<a href="/fixtures" class="btn">
+Open Fixtures
+</a>
+
+</div>
+
+<div class="feature-box">
+
+<div class="feature-icon">🪪</div>
+
+<h3>Player ID System</h3>
+
+<p>
+Generate Ultra Pro Max player identity cards
+with QR codes, photos, logos and printable PDFs.
+</p>
+
+<a href="/player_id" class="btn">
+Generate IDs
+</a>
+
+</div>
+
+<div class="feature-box">
+
+<div class="feature-icon">📰</div>
+
+<h3>News & Sponsorship</h3>
+
+<p>
+Publish tournament announcements,
+sponsorship updates, donation reports
+and media stories professionally.
+</p>
+
+<a href="/news" class="btn">
+Open News
+</a>
+
+</div>
+
+</div>
+
+<!-- =========================
+STATUS
+========================= -->
+
+<div class="status-section">
+
+<h2 class="section-title">
+TOURNAMENT STATUS
+</h2>
+
+<div class="status-grid">
+
+<div class="status-box">
+<h3>Total Teams</h3>
+<div class="stat">{{total}}</div>
+</div>
+
+<div class="status-box">
+<h3>System Status</h3>
+<div class="status-pill">ONLINE</div>
+</div>
+
+<div class="status-box">
+<h3>Fixtures Engine</h3>
+<div class="status-pill">ACTIVE</div>
+</div>
+
+<div class="status-box">
+<h3>Registration</h3>
+<div class="status-pill">OPEN</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<div class="footer">
+
+© 2026 SONGHAI SALLAH FOOTBALL GALA TOURNAMENT —
+ULTRA PRO MAX ADMIN SYSTEM
+
+</div>
+
+</body>
+</html>
