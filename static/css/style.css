@@ -267,3 +267,226 @@ background:linear-gradient(135deg,#ffffff,#efe8ff);
 table{
 box-shadow:0 6px 18px rgba(0,0,0,.08);
 }
+
+/* ================= NAVBAR UPGRADE ================= */
+
+.header{
+position:sticky;
+top:0;
+z-index:999;
+background:linear-gradient(90deg,#4B0082,#111);
+color:white;
+padding:12px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* LOGO */
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo img{
+height:50px;
+border-radius:8px;
+}
+
+.logo span{
+font-size:22px;
+font-weight:900;
+}
+
+/* NAV */
+.nav{
+display:flex;
+gap:15px;
+align-items:center;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+font-weight:900;
+font-size:18px;
+padding:10px 16px;
+border-radius:25px;
+transition:.3s;
+}
+
+/* Hover */
+.nav a:hover{
+background:white;
+color:#4B0082;
+transform:translateY(-2px);
+}
+
+/* ACTIVE EFFECT */
+.nav a:active{
+transform:scale(0.95);
+}
+
+/* ================= MOBILE ================= */
+
+.menu-toggle{
+display:none;
+font-size:28px;
+cursor:pointer;
+}
+
+/* MOBILE DESIGN */
+@media(max-width:768px){
+
+.nav{
+display:none;
+flex-direction:column;
+width:100%;
+background:#111;
+margin-top:10px;
+border-radius:10px;
+padding:10px;
+}
+
+.nav.active{
+display:flex;
+}
+
+.nav a{
+font-size:16px;
+padding:12px;
+text-align:center;
+}
+
+.menu-toggle{
+display:block;
+color:white;
+}
+
+.header{
+flex-wrap:wrap;
+}
+
+}
+
+/* ================= NAVBAR UPGRADE ================= */
+
+.header{
+position:sticky;
+top:0;
+z-index:999;
+background:linear-gradient(90deg,#4B0082,#111);
+color:white;
+padding:12px 20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* LOGO */
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo img{
+height:50px;
+border-radius:8px;
+}
+
+.logo span{
+font-size:22px;
+font-weight:900;
+}
+
+/* NAV */
+.nav{
+display:flex;
+gap:15px;
+align-items:center;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+font-weight:900;
+font-size:18px;
+padding:10px 16px;
+border-radius:25px;
+transition:.3s;
+}
+
+/* Hover */
+.nav a:hover{
+background:white;
+color:#4B0082;
+transform:translateY(-2px);
+}
+
+/* ACTIVE EFFECT */
+.nav a:active{
+transform:scale(0.95);
+}
+
+/* ================= MOBILE ================= */
+
+.menu-toggle{
+display:none;
+font-size:28px;
+cursor:pointer;
+}
+
+/* MOBILE DESIGN */
+@media(max-width:768px){
+
+.nav{
+display:none;
+flex-direction:column;
+width:100%;
+background:#111;
+margin-top:10px;
+border-radius:10px;
+padding:10px;
+}
+
+.nav.active{
+display:flex;
+}
+
+.nav a{
+font-size:16px;
+padding:12px;
+text-align:center;
+}
+
+.menu-toggle{
+display:block;
+color:white;
+}
+
+.header{
+flex-wrap:wrap;
+}
+
+}
+
+.nav a{
+font-size:18px; /* bigger text */
+padding:10px 16px;
+font-weight:900;
+}
+
+@media(max-width:768px){
+.nav{
+justify-content:center;
+}
+
+.nav a{
+font-size:16px;
+padding:10px;
+}
+}
