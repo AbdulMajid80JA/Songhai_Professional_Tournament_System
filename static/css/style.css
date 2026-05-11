@@ -490,3 +490,89 @@ font-size:16px;
 padding:10px;
 }
 }
+
+/* =========================================
+SONGHAI MOBILE FIX ENGINE
+========================================= */
+
+html{
+overflow-x:hidden !important;
+scroll-behavior:smooth;
+}
+
+body{
+overflow-x:hidden !important;
+overflow-y:auto !important;
+height:auto !important;
+min-height:100vh !important;
+position:relative !important;
+-webkit-overflow-scrolling:touch;
+}
+
+/* FIX ALL PAGE CONTAINERS */
+.container,
+.main,
+.wrapper,
+.hero,
+.section,
+.slider,
+.slides,
+.content,
+.page{
+overflow:visible !important;
+height:auto !important;
+max-height:none !important;
+}
+
+/* FIX NAVBAR */
+.header{
+position:sticky !important;
+top:0 !important;
+z-index:9999 !important;
+width:100% !important;
+height:auto !important;
+}
+
+/* FIX NAVIGATION */
+.nav{
+position:relative !important;
+height:auto !important;
+max-height:none !important;
+overflow:visible !important;
+}
+
+/* REMOVE FULLSCREEN BUGS */
+@media(max-width:768px){
+
+*{
+max-width:100%;
+}
+
+body{
+position:relative !important;
+}
+
+.slider{
+height:auto !important;
+min-height:250px;
+}
+
+.slide{
+position:relative !important;
+height:auto !important;
+}
+
+.hero,
+.section,
+.container,
+.main{
+margin-top:10px !important;
+padding-top:10px !important;
+}
+
+}
+
+/* FORCE ALL FIXED ELEMENTS SAFE */
+*:not(.floating-btn):not(.popup){
+position:relative;
+}
