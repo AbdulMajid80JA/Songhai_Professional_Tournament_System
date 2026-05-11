@@ -543,35 +543,35 @@ overflow:visible !important;
 /* REMOVE FULLSCREEN BUGS */
 @media(max-width:768px){
 
-*{
-max-width:100%;
-}
+  *{
+    max-width:100%;
+  }
 
-body{
-position:relative !important;
-}
+  body{
+    position:relative !important;
+  }
 
-.slider{
-height:auto !important;
-min-height:250px;
-}
+  .slider{
+    height:auto !important;
+    min-height:250px;
+  }
 
-.slide{
-position:relative !important;
-height:auto !important;
-}
+  .slide{
+    position:relative !important;
+    height:auto !important;
+  }
 
-.hero,
-.section,
-.container,
-.main{
-margin-top:10px !important;
-padding-top:10px !important;
-}
+  .hero,
+  .section,
+  .container,
+  .main{
+    margin-top:10px !important;
+    padding-top:10px !important;
+  }
 
-}
+} /* This was the missing bracket! */
 
 /* FORCE ALL FIXED ELEMENTS SAFE */
 *:not(.floating-btn):not(.popup){
-position:relative;
+  position:relative;
 }
