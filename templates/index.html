@@ -504,44 +504,70 @@ color:#c79fff;
 }
 
 /* =========================================
-MOBILE
+MODERN MOBILE-ONLY HANDLE
 ========================================= */
 
-@media(max-width:768px){
+/* This triggers ONLY on mobile devices (touchscreens) 
+   regardless of how wide the screen is. */
+@media (pointer: coarse) {
 
-.caption{
-padding:25px;
-}
+    /* Stack navigation items for easier thumb tapping */
+    .header {
+        flex-direction: column;
+        padding: 12px 15px;
+    }
 
-.caption h2{
-font-size:34px;
-}
+    .nav {
+        justify-content: center;
+        margin-top: 15px;
+        width: 100%;
+        gap: 8px;
+    }
 
-.caption p{
-font-size:16px;
-}
+    .nav a {
+        padding: 10px 14px;
+        font-size: 13px;
+        flex: 1 1 calc(33% - 10px); /* Buttons grow to fit width */
+        text-align: center;
+    }
 
-.hero h1{
-font-size:40px;
-}
+    /* Adjust typography for smaller handheld screens */
+    .caption h2 {
+        font-size: 32px;
+    }
 
-.hero p{
-font-size:17px;
-}
+    .caption p {
+        font-size: 15px;
+    }
 
-.section h2{
-font-size:34px;
-}
+    .hero h1 {
+        font-size: 38px;
+    }
 
-.slider{
-height:78vh;
-}
+    .hero p {
+        font-size: 16px;
+    }
 
-.nav{
-justify-content:center;
-margin-top:15px;
-}
+    .section h2 {
+        font-size: 32px;
+    }
 
+    /* Shrink height to prevent too much scrolling on mobile */
+    .slider {
+        height: 65vh;
+    }
+
+    /* Increase tap target sizes for buttons */
+    .cta a, .card a {
+        width: 100%; /* Full width buttons are easier for thumbs */
+        padding: 16px 20px;
+        text-align: center;
+    }
+
+    /* Stop hover transforms - they can feel "sticky" on touch */
+    .card:hover, .stat-card:hover, .nav a:hover {
+        transform: none !important;
+    }
 }
 
 </style>
